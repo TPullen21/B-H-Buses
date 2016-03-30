@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) HTTPGetRequest *httpGetRequest;
 @property (strong, nonatomic) NSMutableArray *downloadedRoutes;
+@property (strong, nonatomic) NSMutableArray *coreDataRoutes;
 @property (strong, nonatomic) Route *selectedRoute;
 
 @end
@@ -24,13 +25,16 @@
     
     self.httpGetRequest.delegate = self;
     
-    [self.httpGetRequest downloadDataWithURL:@"http://bh.buscms.com//brightonbuses/api/XmlEntities/v1/routes.aspx?xsl=json"];
+    //[self.httpGetRequest downloadDataWithURL:@"http://bh.buscms.com//brightonbuses/api/XmlEntities/v1/routes.aspx?xsl=json"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // If we haven't initialised the document for the core data context, initialise it
+    if (!self.document) [self initialiseDocument];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,14 +49,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.downloadedRoutes count];
+    //return [self.downloadedRoutes count];
+    return [self.coreDataRoutes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"routesCell" forIndexPath:indexPath];
     
     // Get the route to be shown
-    Route *route = self.downloadedRoutes[indexPath.row];
+    //Route *route = self.downloadedRoutes[indexPath.row];
+    Route *route = self.coreDataRoutes[indexPath.row];
     
     cell.textLabel.text = route.routeName;
     
@@ -110,6 +116,70 @@
     jsonString = [jsonString stringByReplacingOccurrencesOfString:@"RouteName" withString:@"\"RouteName\""];
     
     return [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+}
+
+- (void)initialiseDocument {
+    
+    // Create a file manager and get the user's document directory path
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+    
+    // Create the document object
+    NSString *documentName = @"Buses";
+    NSURL *documentURL = [documentsDirectory URLByAppendingPathComponent:documentName];
+    self.document = [[UIManagedDocument alloc] initWithFileURL:documentURL];
+    
+    // If the document exists in the user's documents, open it, else save it
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[documentURL path]]) {
+        [self.document openWithCompletionHandler:^(BOOL success) {
+            if (success) [self documentIsReady];
+            if (!success) NSLog(@"Couldn't open document at %@", documentURL);
+        }];
+    } else {
+        [self.document saveToURL:documentURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+            if (success) [self documentIsReady];
+            if (!success) NSLog(@"Couldn't open document at %@", documentURL);
+        }];
+    }
+}
+
+- (void)documentIsReady {
+    
+    // If it's in the normal state, proceed
+    if (self.document.documentState == UIDocumentStateNormal) {
+        
+        // Get the context from the document
+        self.context = self.document.managedObjectContext;
+        
+        // If we've managed to get the context, proceed
+        if (self.context) {
+            
+            self.coreDataRoutes = [Route getAllRoutesFromCoreDataWithContext:self.context];
+            
+            // If we receive an empty array (not nil!) then get the routes from the file and reload the table
+            if (self.coreDataRoutes && ![self.coreDataRoutes count]) {
+                NSLog(@"Oops");
+            }
+            // Else if we received the routes, reload the table to show them!
+            else if (self.coreDataRoutes && [self.coreDataRoutes count]) {
+                [self.tableView reloadData];
+            }
+            else if (!self.coreDataRoutes) {
+                NSLog(@"Unable to fetch routes from Core Data.");
+            }
+            
+            // Call the download items method of the routes model object
+            //[self.routesModel downloadItems];
+            
+        }
+        else {
+            NSLog(@"Context failed to intialise.");
+        }
+        
+    }
+    else {
+        NSLog(@"Document is not in normal state.");
+    }
 }
 
 #pragma mark - Lazy Instantiation

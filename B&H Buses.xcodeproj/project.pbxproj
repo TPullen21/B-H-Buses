@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD9881D51CABDD8200BB0B06 /* AllStopsForAllRoutes.json in Resources */ = {isa = PBXBuildFile; fileRef = DD9881D41CABDD8200BB0B06 /* AllStopsForAllRoutes.json */; };
+		DD9881D91CABDE3A00BB0B06 /* BusesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD9881D71CABDE3A00BB0B06 /* BusesModel.xcdatamodeld */; };
+		DD9881E81CABE67B00BB0B06 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9881E71CABE67B00BB0B06 /* Stop.m */; };
+		DD9881F51CABEB5D00BB0B06 /* CDLkRouteStop+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9881EA1CABEB5D00BB0B06 /* CDLkRouteStop+CoreDataProperties.m */; };
+		DD9881F61CABEB5D00BB0B06 /* CDLkRouteStop.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9881EC1CABEB5D00BB0B06 /* CDLkRouteStop.m */; };
+		DD9881F71CABEB5D00BB0B06 /* CDStop+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9881EE1CABEB5D00BB0B06 /* CDStop+CoreDataProperties.m */; };
+		DD9881F81CABEB5D00BB0B06 /* CDStop.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9881F01CABEB5D00BB0B06 /* CDStop.m */; };
+		DD9881F91CABEB5D00BB0B06 /* CDRoute+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9881F21CABEB5D00BB0B06 /* CDRoute+CoreDataProperties.m */; };
+		DD9881FA1CABEB5D00BB0B06 /* CDRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9881F41CABEB5D00BB0B06 /* CDRoute.m */; };
+		DD9881FD1CAC12D400BB0B06 /* LkRouteStop.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9881FC1CAC12D400BB0B06 /* LkRouteStop.m */; };
 		DD9BC7561C84610F00900F85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC7551C84610F00900F85 /* main.m */; };
 		DD9BC7591C84610F00900F85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC7581C84610F00900F85 /* AppDelegate.m */; };
 		DD9BC75F1C84610F00900F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9BC75D1C84610F00900F85 /* Main.storyboard */; };
@@ -22,6 +32,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD9881D41CABDD8200BB0B06 /* AllStopsForAllRoutes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AllStopsForAllRoutes.json; sourceTree = "<group>"; };
+		DD9881D81CABDE3A00BB0B06 /* BusesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusesModel.xcdatamodel; sourceTree = "<group>"; };
+		DD9881E61CABE67B00BB0B06 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
+		DD9881E71CABE67B00BB0B06 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
+		DD9881E91CABEB5D00BB0B06 /* CDLkRouteStop+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDLkRouteStop+CoreDataProperties.h"; sourceTree = "<group>"; };
+		DD9881EA1CABEB5D00BB0B06 /* CDLkRouteStop+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CDLkRouteStop+CoreDataProperties.m"; sourceTree = "<group>"; };
+		DD9881EB1CABEB5D00BB0B06 /* CDLkRouteStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDLkRouteStop.h; sourceTree = "<group>"; };
+		DD9881EC1CABEB5D00BB0B06 /* CDLkRouteStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDLkRouteStop.m; sourceTree = "<group>"; };
+		DD9881ED1CABEB5D00BB0B06 /* CDStop+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDStop+CoreDataProperties.h"; sourceTree = "<group>"; };
+		DD9881EE1CABEB5D00BB0B06 /* CDStop+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CDStop+CoreDataProperties.m"; sourceTree = "<group>"; };
+		DD9881EF1CABEB5D00BB0B06 /* CDStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDStop.h; sourceTree = "<group>"; };
+		DD9881F01CABEB5D00BB0B06 /* CDStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDStop.m; sourceTree = "<group>"; };
+		DD9881F11CABEB5D00BB0B06 /* CDRoute+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDRoute+CoreDataProperties.h"; sourceTree = "<group>"; };
+		DD9881F21CABEB5D00BB0B06 /* CDRoute+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CDRoute+CoreDataProperties.m"; sourceTree = "<group>"; };
+		DD9881F31CABEB5D00BB0B06 /* CDRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRoute.h; sourceTree = "<group>"; };
+		DD9881F41CABEB5D00BB0B06 /* CDRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRoute.m; sourceTree = "<group>"; };
+		DD9881FB1CAC12D400BB0B06 /* LkRouteStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LkRouteStop.h; sourceTree = "<group>"; };
+		DD9881FC1CAC12D400BB0B06 /* LkRouteStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LkRouteStop.m; sourceTree = "<group>"; };
 		DD9BC7511C84610F00900F85 /* B&H Buses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "B&H Buses.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9BC7551C84610F00900F85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD9BC7571C84610F00900F85 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -57,6 +85,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD9881D61CABDE0500BB0B06 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				DD9881E91CABEB5D00BB0B06 /* CDLkRouteStop+CoreDataProperties.h */,
+				DD9881EA1CABEB5D00BB0B06 /* CDLkRouteStop+CoreDataProperties.m */,
+				DD9881EB1CABEB5D00BB0B06 /* CDLkRouteStop.h */,
+				DD9881EC1CABEB5D00BB0B06 /* CDLkRouteStop.m */,
+				DD9881ED1CABEB5D00BB0B06 /* CDStop+CoreDataProperties.h */,
+				DD9881EE1CABEB5D00BB0B06 /* CDStop+CoreDataProperties.m */,
+				DD9881EF1CABEB5D00BB0B06 /* CDStop.h */,
+				DD9881F01CABEB5D00BB0B06 /* CDStop.m */,
+				DD9881F11CABEB5D00BB0B06 /* CDRoute+CoreDataProperties.h */,
+				DD9881F21CABEB5D00BB0B06 /* CDRoute+CoreDataProperties.m */,
+				DD9881F31CABEB5D00BB0B06 /* CDRoute.h */,
+				DD9881F41CABEB5D00BB0B06 /* CDRoute.m */,
+				DD9881D71CABDE3A00BB0B06 /* BusesModel.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		DD9BC7481C84610F00900F85 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +127,7 @@
 		DD9BC7531C84610F00900F85 /* B&H Buses */ = {
 			isa = PBXGroup;
 			children = (
+				DD9881D61CABDE0500BB0B06 /* CoreData */,
 				DD9BC77C1C84637700900F85 /* Network Classes */,
 				DD9BC77B1C84635600900F85 /* Models */,
 				DD9BC7741C8462AF00900F85 /*  View Controllers */,
@@ -96,6 +145,7 @@
 		DD9BC7541C84610F00900F85 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DD9881D41CABDD8200BB0B06 /* AllStopsForAllRoutes.json */,
 				DD9BC7551C84610F00900F85 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -117,6 +167,10 @@
 			children = (
 				DD9BC7801C8464C100900F85 /* Route.h */,
 				DD9BC7811C8464C100900F85 /* Route.m */,
+				DD9881E61CABE67B00BB0B06 /* Stop.h */,
+				DD9881E71CABE67B00BB0B06 /* Stop.m */,
+				DD9881FB1CAC12D400BB0B06 /* LkRouteStop.h */,
+				DD9881FC1CAC12D400BB0B06 /* LkRouteStop.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -189,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD9BC7641C84610F00900F85 /* LaunchScreen.storyboard in Resources */,
+				DD9881D51CABDD8200BB0B06 /* AllStopsForAllRoutes.json in Resources */,
 				DD9BC7611C84610F00900F85 /* Assets.xcassets in Resources */,
 				DD9BC75F1C84610F00900F85 /* Main.storyboard in Resources */,
 			);
@@ -201,12 +256,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD9881D91CABDE3A00BB0B06 /* BusesModel.xcdatamodeld in Sources */,
 				DD9BC7591C84610F00900F85 /* AppDelegate.m in Sources */,
+				DD9881FA1CABEB5D00BB0B06 /* CDRoute.m in Sources */,
 				DD9BC77F1C8463A700900F85 /* HTTPGetRequest.m in Sources */,
 				DD9BC7561C84610F00900F85 /* main.m in Sources */,
+				DD9881F81CABEB5D00BB0B06 /* CDStop.m in Sources */,
+				DD9881F71CABEB5D00BB0B06 /* CDStop+CoreDataProperties.m in Sources */,
+				DD9881F51CABEB5D00BB0B06 /* CDLkRouteStop+CoreDataProperties.m in Sources */,
+				DD9881F61CABEB5D00BB0B06 /* CDLkRouteStop.m in Sources */,
 				DD9BC7821C8464C100900F85 /* Route.m in Sources */,
 				DD9BC7731C8461FB00900F85 /* InitialLoadViewController.m in Sources */,
 				DD9BC77A1C8462E500900F85 /* RoutesTableViewController.m in Sources */,
+				DD9881F91CABEB5D00BB0B06 /* CDRoute+CoreDataProperties.m in Sources */,
+				DD9881E81CABE67B00BB0B06 /* Stop.m in Sources */,
+				DD9881FD1CAC12D400BB0B06 /* LkRouteStop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,8 +419,22 @@
 				DD9BC76A1C84610F00900F85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DD9881D71CABDE3A00BB0B06 /* BusesModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DD9881D81CABDE3A00BB0B06 /* BusesModel.xcdatamodel */,
+			);
+			currentVersion = DD9881D81CABDE3A00BB0B06 /* BusesModel.xcdatamodel */;
+			path = BusesModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DD9BC7491C84610F00900F85 /* Project object */;
 }

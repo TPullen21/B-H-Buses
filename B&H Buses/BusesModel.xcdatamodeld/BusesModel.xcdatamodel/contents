@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="CDLkRouteStop" representedClassName="CDLkRouteStop" syncable="YES">
+        <attribute name="listOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDRoute" inverseName="lkRouteStop" inverseEntity="CDRoute" syncable="YES"/>
+        <relationship name="stop" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDStop" inverseName="lkStopRoute" inverseEntity="CDStop" syncable="YES"/>
+    </entity>
+    <entity name="CDRoute" representedClassName="CDRoute" syncable="YES">
+        <attribute name="routeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routeName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lkRouteStop" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDLkRouteStop" inverseName="route" inverseEntity="CDLkRouteStop" syncable="YES"/>
+    </entity>
+    <entity name="CDStop" representedClassName="CDStop" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="operatorsCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stopID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stopName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lkStopRoute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDLkRouteStop" inverseName="stop" inverseEntity="CDLkRouteStop" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDStop" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="CDRoute" positionX="-54" positionY="36" width="128" height="90"/>
+        <element name="CDLkRouteStop" positionX="-36" positionY="63" width="128" height="90"/>
+    </elements>
+</model>

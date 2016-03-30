@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString *hasLoadedWithFileDataKey = @"HasLoaded";
+static NSString *loadingDataLabelText = @"Performing initial app data processing, this should take less than a minute.";
+
 @interface InitialLoadViewController : UIViewController
+
+@property (strong, nonatomic) IBOutlet UILabel *initialLoadLabel;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+
+@property (strong, nonatomic) UIManagedDocument *document;
+@property (strong, nonatomic) NSManagedObjectContext *context;
 
 @end
