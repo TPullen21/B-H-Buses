@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  InitialLoadViewController.h
 //  B&H Buses
 //
 //  Created by Tom Pullen on 29/02/2016.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface InitialLoadViewController : UIViewController
 
 @end
-

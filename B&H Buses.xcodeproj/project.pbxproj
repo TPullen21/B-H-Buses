@@ -9,10 +9,16 @@
 /* Begin PBXBuildFile section */
 		DD9BC7561C84610F00900F85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC7551C84610F00900F85 /* main.m */; };
 		DD9BC7591C84610F00900F85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC7581C84610F00900F85 /* AppDelegate.m */; };
-		DD9BC75C1C84610F00900F85 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC75B1C84610F00900F85 /* ViewController.m */; };
 		DD9BC75F1C84610F00900F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9BC75D1C84610F00900F85 /* Main.storyboard */; };
 		DD9BC7611C84610F00900F85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD9BC7601C84610F00900F85 /* Assets.xcassets */; };
 		DD9BC7641C84610F00900F85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9BC7621C84610F00900F85 /* LaunchScreen.storyboard */; };
+		DD9BC76C1C84611C00900F85 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9BC76B1C84611C00900F85 /* CoreData.framework */; };
+		DD9BC76E1C84612600900F85 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9BC76D1C84612600900F85 /* CoreLocation.framework */; };
+		DD9BC7701C84612E00900F85 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9BC76F1C84612E00900F85 /* MapKit.framework */; };
+		DD9BC7731C8461FB00900F85 /* InitialLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC7721C8461FB00900F85 /* InitialLoadViewController.m */; };
+		DD9BC77A1C8462E500900F85 /* RoutesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC7791C8462E500900F85 /* RoutesTableViewController.m */; };
+		DD9BC77F1C8463A700900F85 /* HTTPGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC77E1C8463A700900F85 /* HTTPGetRequest.m */; };
+		DD9BC7821C8464C100900F85 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC7811C8464C100900F85 /* Route.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +26,21 @@
 		DD9BC7551C84610F00900F85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD9BC7571C84610F00900F85 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DD9BC7581C84610F00900F85 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DD9BC75A1C84610F00900F85 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DD9BC75B1C84610F00900F85 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		DD9BC75E1C84610F00900F85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD9BC7601C84610F00900F85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD9BC7631C84610F00900F85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD9BC7651C84610F00900F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD9BC76B1C84611C00900F85 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DD9BC76D1C84612600900F85 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DD9BC76F1C84612E00900F85 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DD9BC7711C8461FB00900F85 /* InitialLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialLoadViewController.h; sourceTree = "<group>"; };
+		DD9BC7721C8461FB00900F85 /* InitialLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialLoadViewController.m; sourceTree = "<group>"; };
+		DD9BC7781C8462E500900F85 /* RoutesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutesTableViewController.h; sourceTree = "<group>"; };
+		DD9BC7791C8462E500900F85 /* RoutesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesTableViewController.m; sourceTree = "<group>"; };
+		DD9BC77D1C8463A700900F85 /* HTTPGetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPGetRequest.h; sourceTree = "<group>"; };
+		DD9BC77E1C8463A700900F85 /* HTTPGetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPGetRequest.m; sourceTree = "<group>"; };
+		DD9BC7801C8464C100900F85 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
+		DD9BC7811C8464C100900F85 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD9BC7701C84612E00900F85 /* MapKit.framework in Frameworks */,
+				DD9BC76E1C84612600900F85 /* CoreLocation.framework in Frameworks */,
+				DD9BC76C1C84611C00900F85 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +60,9 @@
 		DD9BC7481C84610F00900F85 = {
 			isa = PBXGroup;
 			children = (
+				DD9BC76F1C84612E00900F85 /* MapKit.framework */,
+				DD9BC76D1C84612600900F85 /* CoreLocation.framework */,
+				DD9BC76B1C84611C00900F85 /* CoreData.framework */,
 				DD9BC7531C84610F00900F85 /* B&H Buses */,
 				DD9BC7521C84610F00900F85 /* Products */,
 			);
@@ -58,10 +79,11 @@
 		DD9BC7531C84610F00900F85 /* B&H Buses */ = {
 			isa = PBXGroup;
 			children = (
+				DD9BC77C1C84637700900F85 /* Network Classes */,
+				DD9BC77B1C84635600900F85 /* Models */,
+				DD9BC7741C8462AF00900F85 /*  View Controllers */,
 				DD9BC7571C84610F00900F85 /* AppDelegate.h */,
 				DD9BC7581C84610F00900F85 /* AppDelegate.m */,
-				DD9BC75A1C84610F00900F85 /* ViewController.h */,
-				DD9BC75B1C84610F00900F85 /* ViewController.m */,
 				DD9BC75D1C84610F00900F85 /* Main.storyboard */,
 				DD9BC7601C84610F00900F85 /* Assets.xcassets */,
 				DD9BC7621C84610F00900F85 /* LaunchScreen.storyboard */,
@@ -77,6 +99,35 @@
 				DD9BC7551C84610F00900F85 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DD9BC7741C8462AF00900F85 /*  View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD9BC7711C8461FB00900F85 /* InitialLoadViewController.h */,
+				DD9BC7721C8461FB00900F85 /* InitialLoadViewController.m */,
+				DD9BC7781C8462E500900F85 /* RoutesTableViewController.h */,
+				DD9BC7791C8462E500900F85 /* RoutesTableViewController.m */,
+			);
+			name = " View Controllers";
+			sourceTree = "<group>";
+		};
+		DD9BC77B1C84635600900F85 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DD9BC7801C8464C100900F85 /* Route.h */,
+				DD9BC7811C8464C100900F85 /* Route.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		DD9BC77C1C84637700900F85 /* Network Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DD9BC77D1C8463A700900F85 /* HTTPGetRequest.h */,
+				DD9BC77E1C8463A700900F85 /* HTTPGetRequest.m */,
+			);
+			name = "Network Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,9 +201,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD9BC75C1C84610F00900F85 /* ViewController.m in Sources */,
 				DD9BC7591C84610F00900F85 /* AppDelegate.m in Sources */,
+				DD9BC77F1C8463A700900F85 /* HTTPGetRequest.m in Sources */,
 				DD9BC7561C84610F00900F85 /* main.m in Sources */,
+				DD9BC7821C8464C100900F85 /* Route.m in Sources */,
+				DD9BC7731C8461FB00900F85 /* InitialLoadViewController.m in Sources */,
+				DD9BC77A1C8462E500900F85 /* RoutesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "B&H Buses/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "self.edu.tompullen.B-H-Buses";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -274,6 +329,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "B&H Buses/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "self.edu.tompullen.B-H-Buses";
 				PRODUCT_NAME = "$(TARGET_NAME)";
