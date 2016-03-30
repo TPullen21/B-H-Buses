@@ -7,6 +7,7 @@
 //
 
 #import "RoutesTableViewController.h"
+#import "StopsTableViewController.h"
 #import "Route.h"
 
 @interface RoutesTableViewController ()
@@ -42,6 +43,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dataDownloaded:(NSData *)data {
+    self.downloadedRoutes = [self parseDownloadedDataToArrayOfRoutes:data];
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -65,21 +72,29 @@
     return cell;
 }
 
-- (void)dataDownloaded:(NSData *)data {
-    self.downloadedRoutes = [self parseDownloadedDataToArrayOfRoutes:data];
+-(void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    [self.tableView reloadData];
+    self.selectedRoute = self.coreDataRoutes[indexPath.row];
+    
+    [self performSegueWithIdentifier:@"showStopsTVC" sender:nil];
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    // If we're segueing to the stops contoller, set the routeID
+    if ([segue.destinationViewController isKindOfClass:[StopsTableViewController class]]) {
+        
+        StopsTableViewController *stopsVC = segue.destinationViewController;
+        
+        stopsVC.route = self.selectedRoute;
+        stopsVC.document = self.document;
+        stopsVC.context = self.context;
+    }
 }
- */
 
 #pragma mark - Helper Methods
 

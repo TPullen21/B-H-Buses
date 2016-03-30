@@ -29,10 +29,42 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Routes" id="E07-ct-YhO"/>
+                    <connections>
+                        <segue destination="7C7-mR-4d1" kind="show" identifier="showStopsTVC" id="qGz-v9-0ft"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVF-5b-gAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="927" y="-96"/>
+        </scene>
+        <!--Stops-->
+        <scene sceneID="HZ5-Z9-dSl">
+            <objects>
+                <tableViewController title="Stops" id="7C7-mR-4d1" customClass="StopsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mk4-MH-phk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StopsCell" id="WYa-wf-KbY">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WYa-wf-KbY" id="oBV-Eb-kEY">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7C7-mR-4d1" id="gd1-pE-MUx"/>
+                            <outlet property="delegate" destination="7C7-mR-4d1" id="qjH-y6-15Z"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Stops" id="COI-TX-ZZZ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q3y-dH-Hie" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1701" y="-97"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bGi-aI-Te4">
