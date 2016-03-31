@@ -17,7 +17,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSString *routeID;
 @property (nullable, nonatomic, retain) NSString *routeName;
-@property (nullable, nonatomic, retain) CDLkRouteStop *lkRouteStop;
+@property (nullable, nonatomic, retain) NSOrderedSet<CDLkRouteStop *> *lkRouteStop;
+
+@end
+
+@interface CDRoute (CoreDataGeneratedAccessors)
+
+- (void)insertObject:(CDLkRouteStop *)value inLkRouteStopAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromLkRouteStopAtIndex:(NSUInteger)idx;
+- (void)insertLkRouteStop:(NSArray<CDLkRouteStop *> *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeLkRouteStopAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInLkRouteStopAtIndex:(NSUInteger)idx withObject:(CDLkRouteStop *)value;
+- (void)replaceLkRouteStopAtIndexes:(NSIndexSet *)indexes withLkRouteStop:(NSArray<CDLkRouteStop *> *)values;
+- (void)addLkRouteStopObject:(CDLkRouteStop *)value;
+- (void)removeLkRouteStopObject:(CDLkRouteStop *)value;
+- (void)addLkRouteStop:(NSOrderedSet<CDLkRouteStop *> *)values;
+- (void)removeLkRouteStop:(NSOrderedSet<CDLkRouteStop *> *)values;
 
 @end
 

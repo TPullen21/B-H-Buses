@@ -25,13 +25,15 @@
     
     self.httpGetRequest.delegate = self;
     
-    [self.httpGetRequest downloadDataWithURL:[NSString stringWithFormat:@"http://bh.buscms.com//brightonbuses/api/XmlEntities/v1/route.aspx?routeid=%@&stops=true&xsl=json", self.route.routeID]];
+    //[self.httpGetRequest downloadDataWithURL:[NSString stringWithFormat:@"http://bh.buscms.com//brightonbuses/api/XmlEntities/v1/route.aspx?routeid=%@&stops=true&xsl=json", self.route.routeID]];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self getStopsFromCoreData];
 }
 
 - (void)didReceiveMemoryWarning {

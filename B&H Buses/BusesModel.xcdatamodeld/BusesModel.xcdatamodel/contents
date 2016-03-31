@@ -8,7 +8,7 @@
     <entity name="CDRoute" representedClassName="CDRoute" syncable="YES">
         <attribute name="routeID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="routeName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="lkRouteStop" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDLkRouteStop" inverseName="route" inverseEntity="CDLkRouteStop" syncable="YES"/>
+        <relationship name="lkRouteStop" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CDLkRouteStop" inverseName="route" inverseEntity="CDLkRouteStop" syncable="YES"/>
     </entity>
     <entity name="CDStop" representedClassName="CDStop" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,11 +16,11 @@
         <attribute name="operatorsCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stopID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stopName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="lkStopRoute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDLkRouteStop" inverseName="stop" inverseEntity="CDLkRouteStop" syncable="YES"/>
+        <relationship name="lkStopRoute" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CDLkRouteStop" inverseName="stop" inverseEntity="CDLkRouteStop" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CDStop" positionX="-63" positionY="-18" width="128" height="135"/>
-        <element name="CDRoute" positionX="-54" positionY="36" width="128" height="90"/>
-        <element name="CDLkRouteStop" positionX="-36" positionY="63" width="128" height="90"/>
+        <element name="CDStop" positionX="-396" positionY="54" width="128" height="133"/>
+        <element name="CDRoute" positionX="-54" positionY="54" width="128" height="88"/>
+        <element name="CDLkRouteStop" positionX="-216" positionY="-61" width="128" height="88"/>
     </elements>
 </model>

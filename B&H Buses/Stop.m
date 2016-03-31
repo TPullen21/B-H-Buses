@@ -35,10 +35,26 @@
     
     if (self) {
         _stopID = dict[@"StopId"];
-        _stopName = dict[@"StopName"];;
-        _operatorsCode = dict[@"OperatorsCode4"];;
+        _stopName = dict[@"StopName"];
+        _operatorsCode = dict[@"OperatorsCode4"];
         _latitude = dict[@"Lat"];
-        _longitude = dict[@"Lng"];;
+        _longitude = dict[@"Lng"];
+    }
+    
+    return self;
+}
+
+// Init with a dictionary of the information
+- initWithCDStop:(CDStop *)cdStop {
+    
+    self = [super init];
+    
+    if (self) {
+        _stopID = cdStop.stopID;
+        _stopName = cdStop.stopName;
+        _operatorsCode = cdStop.operatorsCode;
+        _latitude = cdStop.latitude;
+        _longitude = cdStop.longitude;
     }
     
     return self;
@@ -76,9 +92,6 @@
 
 + (void)insertStopIntoCoreData:(Stop *)stop forRouteID:(NSString *)routeID withRouteName:(NSString *)routeName withOrder:(int)listOrder forContext:(NSManagedObjectContext *)context {
     
-    // Insert a link between the route and stop
-    //    [CDLkRouteStop insertRouteStopLinkIntoCoreDataWithStopID:stop.stopID forRouteID:routeID withRouteName:routeName forContext:context];
-    
     // If the stop does not already exist in core data, add it
     if (![Stop getCDStopForStopID:stop.stopID withContext:context]) {
         
@@ -94,45 +107,20 @@
         [LkRouteStop insertRouteStopLinkIntoCoreDataWithStopID:stop.stopID forRouteID:routeID withOrder:listOrder forContext:context];
     }
 }
-//
-//+ (void)linkStop:(Stop *)stop withRoute:(Route *)route withRouteName:(NSString *)routeName withOrder:(int)listOrder forContext:(NSManagedObjectContext *)context {
-//    
-//    // Insert a link between the route and stop
-//    //    [CDLkRouteStop insertRouteStopLinkIntoCoreDataWithStopID:stop.stopID forRouteID:routeID withRouteName:routeName forContext:context];
-//    
-//    // If the stop does not already exist in core data, add it
-//    if (![Stop getCDStopForStopID:stop.stopID withContext:context]) {
-//        
-//        // Insert a stop into Core Data for a given context from a stop object
-//        CDStop *coreDataStop = [NSEntityDescription insertNewObjectForEntityForName:@"CDStop"
-//                                                             inManagedObjectContext:context];
-//        coreDataStop.stopID = stop.stopID;
-//        coreDataStop.stopName = stop.stopName;
-//        coreDataStop.latitude = stop.latitude;
-//        coreDataStop.longitude = stop.longitude;
-//        coreDataStop.operatorsCode = stop.operatorsCode;
-//        coreDataStop.listOrder = [[NSNumber alloc] initWithInt:listOrder];
-//        
-//        CDRoute *route = [Route getCDRouteForRouteID:routeID withContext:context];
-//        
-//        if (route) {
-//            coreDataStop.lkStopRoute = route;
-//        } else {
-//            NSLog(@"Route not found. Name: %@ ID: %@", routeName, routeID);
-//        }
-//    }
-//}
 
 + (NSArray *)getStopsFromCoreForRoute:(NSString *)routeName withID:(NSString *)routeID withContext:(NSManagedObjectContext *)context {
     
     NSError *error;
     
-    // Create the fetch object to get the stop for the stop ID
-    NSFetchRequest *getStopRequest = [[NSFetchRequest alloc] initWithEntityName:@"CDStop"];
-    getStopRequest.predicate = [NSPredicate predicateWithFormat:@"ANY lkRouteStop.routeID = %@ && ANY lkRouteStop.routeName = %@", routeID, routeName];
-    getStopRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"listOrder" ascending:YES selector:@selector(localizedStandardCompare:)]];
-//#warning TODO: Brings back stops in a random order
-    NSArray *listOfStops = [context executeFetchRequest:getStopRequest error:&error];
+    CDRoute *tempcdroute = [Route getCDRouteForRouteID:routeID withContext:context];
+    
+    NSOrderedSet *set = tempcdroute.lkRouteStop;
+    
+    NSMutableArray *listOfStops = [[NSMutableArray alloc] init];
+    
+    for (CDLkRouteStop *cdLkRouteStop in set) {
+        [listOfStops addObject:cdLkRouteStop.stop];
+    }
     
     if (error) NSLog(@"%@", error);
     NSLog(@"%lu", (unsigned long)[listOfStops count]);
