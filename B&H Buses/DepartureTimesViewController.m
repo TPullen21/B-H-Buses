@@ -7,6 +7,7 @@
 //
 
 #import "DepartureTimesViewController.h"
+#import "DepartureTimeTableViewCell.h"
 #import "DepartureTime.h"
 
 @interface DepartureTimesViewController ()
@@ -99,14 +100,14 @@
     
     // Retrieve reusable cell cell
     NSString *cellIdentifier = @"DepartureTimesCell";
-    UITableViewCell *myCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    DepartureTimeTableViewCell *myCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     // Get the depature time record to be shown
     DepartureTime *departureTime = self.departureTimes[indexPath.row];
     
     // Assign the relevant information to the cell's text labels
-    myCell.textLabel.text = departureTime.departureTimeInMinutes;
-    myCell.detailTextLabel.text = departureTime.departureTimeStamp;
+    myCell.departureTimeInMinsLabel.text = departureTime.departureTimeInMinutes;
+    myCell.departureTimestampLabel.text = departureTime.departureTimeStamp;
     
     return myCell;
 }

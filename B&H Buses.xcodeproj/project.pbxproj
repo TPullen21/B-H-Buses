@@ -32,6 +32,7 @@
 		DD9BC7821C8464C100900F85 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC7811C8464C100900F85 /* Route.m */; };
 		DDA1DEAC1CB7B86600B0CE1C /* DepartureTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA1DEAB1CB7B86600B0CE1C /* DepartureTimesViewController.m */; };
 		DDA1DEAF1CB7BBC100B0CE1C /* DepartureTime.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA1DEAE1CB7BBC100B0CE1C /* DepartureTime.m */; };
+		DDA1DEB21CB7C3B200B0CE1C /* DepartureTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA1DEB11CB7C3B200B0CE1C /* DepartureTimeTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,8 @@
 		DDA1DEAB1CB7B86600B0CE1C /* DepartureTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureTimesViewController.m; sourceTree = "<group>"; };
 		DDA1DEAD1CB7BBC100B0CE1C /* DepartureTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureTime.h; sourceTree = "<group>"; };
 		DDA1DEAE1CB7BBC100B0CE1C /* DepartureTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureTime.m; sourceTree = "<group>"; };
+		DDA1DEB01CB7C3B200B0CE1C /* DepartureTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureTimeTableViewCell.h; sourceTree = "<group>"; };
+		DDA1DEB11CB7C3B200B0CE1C /* DepartureTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureTimeTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,8 @@
 				DD9882021CAC1D8A00BB0B06 /* StopsTableViewController.m */,
 				DDA1DEAA1CB7B86600B0CE1C /* DepartureTimesViewController.h */,
 				DDA1DEAB1CB7B86600B0CE1C /* DepartureTimesViewController.m */,
+				DDA1DEB01CB7C3B200B0CE1C /* DepartureTimeTableViewCell.h */,
+				DDA1DEB11CB7C3B200B0CE1C /* DepartureTimeTableViewCell.m */,
 			);
 			name = " View Controllers";
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDA1DEB21CB7C3B200B0CE1C /* DepartureTimeTableViewCell.m in Sources */,
 				DD9882401CAC5BBF00BB0B06 /* CDStop.m in Sources */,
 				DDA1DEAC1CB7B86600B0CE1C /* DepartureTimesViewController.m in Sources */,
 				DD9881D91CABDE3A00BB0B06 /* BusesModel.xcdatamodeld in Sources */,

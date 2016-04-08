@@ -91,29 +91,47 @@
                                 <rect key="frame" x="0.0" y="304" width="600" height="296"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DepartureTimesCell" textLabel="CK6-pf-W2i" detailTextLabel="vpJ-pc-NGM" style="IBUITableViewCellStyleSubtitle" id="Ej7-bx-Ik9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DepartureTimesCell" id="Ej7-bx-Ik9" customClass="DepartureTimeTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ej7-bx-Ik9" id="d4f-Rr-YDU">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CK6-pf-W2i">
-                                                    <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1r-2e-O9R">
+                                                    <rect key="frame" x="15" y="0.0" width="49" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vpJ-pc-NGM">
-                                                    <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4s5-NT-Wvd">
+                                                    <rect key="frame" x="554.5" y="5" width="37.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBJ-7v-tOl">
+                                                    <rect key="frame" x="557" y="24" width="31" height="14"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4s5-NT-Wvd" firstAttribute="top" secondItem="d4f-Rr-YDU" secondAttribute="top" constant="5" id="3P1-DJ-QOY"/>
+                                                <constraint firstItem="r1r-2e-O9R" firstAttribute="top" secondItem="d4f-Rr-YDU" secondAttribute="top" id="O7E-WQ-B6h"/>
+                                                <constraint firstItem="iBJ-7v-tOl" firstAttribute="top" secondItem="4s5-NT-Wvd" secondAttribute="bottom" constant="1" id="bx6-Cm-cOU"/>
+                                                <constraint firstAttribute="trailing" secondItem="iBJ-7v-tOl" secondAttribute="trailing" constant="12" id="gEU-fF-Ar9"/>
+                                                <constraint firstItem="r1r-2e-O9R" firstAttribute="leading" secondItem="d4f-Rr-YDU" secondAttribute="leading" constant="15" id="ldu-G7-UPO"/>
+                                                <constraint firstAttribute="trailing" secondItem="4s5-NT-Wvd" secondAttribute="trailing" constant="8" id="mTI-I5-4UO"/>
+                                                <constraint firstAttribute="bottom" secondItem="r1r-2e-O9R" secondAttribute="bottom" id="oxX-I9-8Ww"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="departureTimeInMinsLabel" destination="4s5-NT-Wvd" id="HDz-6q-m37"/>
+                                            <outlet property="departureTimestampLabel" destination="iBJ-7v-tOl" id="wsf-O8-xkB"/>
+                                            <outlet property="serviceNameLabel" destination="r1r-2e-O9R" id="99e-YG-fk2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
