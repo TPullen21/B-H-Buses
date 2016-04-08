@@ -83,6 +83,37 @@
     [self.tableView reloadData];
 }
 
+#pragma mark Table View Delegate Methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of departure time records
+    return self.departureTimes.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Retrieve reusable cell cell
+    NSString *cellIdentifier = @"DepartureTimesCell";
+    DepartureTimeTableViewCell *departureTimeCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    // Get the depature time record to be shown
+    DepartureTime *departureTime = self.departureTimes[indexPath.row];
+    
+    // Assign the relevant information to the cell's text labels
+    departureTimeCell.serviceNameLabel.text = departureTime.serviceName;
+    departureTimeCell.destinationLabel.text = departureTime.destination;
+    departureTimeCell.departureTimeInMinsLabel.text = departureTime.departureTimeInMinutes;
+    departureTimeCell.departureTimestampLabel.text = departureTime.departureTimeStamp;
+    
+    return departureTimeCell;
+}
+
+- (BOOL)tableView:(nonnull UITableView *)tableView canEditRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    return YES;
+}
+
+#pragma mark - Helper Methods
+
 - (NSString *)scrapeServiceNameOrDestination:(NSString *)htmlTDString {
     
     NSRange firstRange = [htmlTDString rangeOfString:@">"];
@@ -112,34 +143,6 @@
     
     dt.departureTimeStamp = timestamp;
     dt.departureTimeInMinutes = time;
-}
-
-#pragma mark Table View Delegate Methods
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of departure time records
-    return self.departureTimes.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    // Retrieve reusable cell cell
-    NSString *cellIdentifier = @"DepartureTimesCell";
-    DepartureTimeTableViewCell *myCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    // Get the depature time record to be shown
-    DepartureTime *departureTime = self.departureTimes[indexPath.row];
-    
-    // Assign the relevant information to the cell's text labels
-    myCell.serviceNameLabel.text = departureTime.serviceName;
-    myCell.departureTimeInMinsLabel.text = departureTime.departureTimeInMinutes;
-    myCell.departureTimestampLabel.text = departureTime.departureTimeStamp;
-    
-    return myCell;
-}
-
-- (BOOL)tableView:(nonnull UITableView *)tableView canEditRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    return YES;
 }
 
 #pragma mark - Lazy Instantiation

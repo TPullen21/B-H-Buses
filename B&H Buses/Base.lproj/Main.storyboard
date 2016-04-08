@@ -105,7 +105,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4s5-NT-Wvd">
-                                                    <rect key="frame" x="554.5" y="5" width="37.5" height="18"/>
+                                                    <rect key="frame" x="554" y="5" width="37.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -116,9 +116,17 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sss-WT-70F">
+                                                    <rect key="frame" x="282.5" y="12" width="35.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="sss-WT-70F" firstAttribute="top" secondItem="d4f-Rr-YDU" secondAttribute="top" constant="12" id="14e-Yi-U6g"/>
                                                 <constraint firstItem="4s5-NT-Wvd" firstAttribute="top" secondItem="d4f-Rr-YDU" secondAttribute="top" constant="5" id="3P1-DJ-QOY"/>
+                                                <constraint firstItem="sss-WT-70F" firstAttribute="centerX" secondItem="d4f-Rr-YDU" secondAttribute="centerX" id="454-4m-mVl"/>
                                                 <constraint firstItem="r1r-2e-O9R" firstAttribute="top" secondItem="d4f-Rr-YDU" secondAttribute="top" id="O7E-WQ-B6h"/>
                                                 <constraint firstItem="iBJ-7v-tOl" firstAttribute="top" secondItem="4s5-NT-Wvd" secondAttribute="bottom" constant="1" id="bx6-Cm-cOU"/>
                                                 <constraint firstAttribute="trailing" secondItem="iBJ-7v-tOl" secondAttribute="trailing" constant="12" id="gEU-fF-Ar9"/>
@@ -130,6 +138,7 @@
                                         <connections>
                                             <outlet property="departureTimeInMinsLabel" destination="4s5-NT-Wvd" id="HDz-6q-m37"/>
                                             <outlet property="departureTimestampLabel" destination="iBJ-7v-tOl" id="wsf-O8-xkB"/>
+                                            <outlet property="destinationLabel" destination="sss-WT-70F" id="I3Y-Je-ttX"/>
                                             <outlet property="serviceNameLabel" destination="r1r-2e-O9R" id="99e-YG-fk2"/>
                                         </connections>
                                     </tableViewCell>

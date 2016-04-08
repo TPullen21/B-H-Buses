@@ -11,6 +11,7 @@
 @interface DepartureTimeTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *serviceNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *destinationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *departureTimeInMinsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *departureTimestampLabel;
 
