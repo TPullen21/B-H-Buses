@@ -31,6 +31,7 @@
 		DD9BC77F1C8463A700900F85 /* HTTPGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC77E1C8463A700900F85 /* HTTPGetRequest.m */; };
 		DD9BC7821C8464C100900F85 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC7811C8464C100900F85 /* Route.m */; };
 		DDA1DEAC1CB7B86600B0CE1C /* DepartureTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA1DEAB1CB7B86600B0CE1C /* DepartureTimesViewController.m */; };
+		DDA1DEAF1CB7BBC100B0CE1C /* DepartureTime.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA1DEAE1CB7BBC100B0CE1C /* DepartureTime.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,8 @@
 		DD9BC7811C8464C100900F85 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
 		DDA1DEAA1CB7B86600B0CE1C /* DepartureTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureTimesViewController.h; sourceTree = "<group>"; };
 		DDA1DEAB1CB7B86600B0CE1C /* DepartureTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureTimesViewController.m; sourceTree = "<group>"; };
+		DDA1DEAD1CB7BBC100B0CE1C /* DepartureTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureTime.h; sourceTree = "<group>"; };
+		DDA1DEAE1CB7BBC100B0CE1C /* DepartureTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureTime.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +184,8 @@
 				DD9881E71CABE67B00BB0B06 /* Stop.m */,
 				DD9881FB1CAC12D400BB0B06 /* LkRouteStop.h */,
 				DD9881FC1CAC12D400BB0B06 /* LkRouteStop.m */,
+				DDA1DEAD1CB7BBC100B0CE1C /* DepartureTime.h */,
+				DDA1DEAE1CB7BBC100B0CE1C /* DepartureTime.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				DD9BC7731C8461FB00900F85 /* InitialLoadViewController.m in Sources */,
 				DD9BC77A1C8462E500900F85 /* RoutesTableViewController.m in Sources */,
 				DD98823E1CAC5BBF00BB0B06 /* CDLkRouteStop.m in Sources */,
+				DDA1DEAF1CB7BBC100B0CE1C /* DepartureTime.m in Sources */,
 				DD9881E81CABE67B00BB0B06 /* Stop.m in Sources */,
 				DD9881FD1CAC12D400BB0B06 /* LkRouteStop.m in Sources */,
 			);
