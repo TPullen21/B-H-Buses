@@ -30,6 +30,7 @@
 		DD9BC77A1C8462E500900F85 /* RoutesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC7791C8462E500900F85 /* RoutesTableViewController.m */; };
 		DD9BC77F1C8463A700900F85 /* HTTPGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC77E1C8463A700900F85 /* HTTPGetRequest.m */; };
 		DD9BC7821C8464C100900F85 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9BC7811C8464C100900F85 /* Route.m */; };
+		DDA1DEAC1CB7B86600B0CE1C /* DepartureTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA1DEAB1CB7B86600B0CE1C /* DepartureTimesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,8 @@
 		DD9BC77E1C8463A700900F85 /* HTTPGetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPGetRequest.m; sourceTree = "<group>"; };
 		DD9BC7801C8464C100900F85 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
 		DD9BC7811C8464C100900F85 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
+		DDA1DEAA1CB7B86600B0CE1C /* DepartureTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureTimesViewController.h; sourceTree = "<group>"; };
+		DDA1DEAB1CB7B86600B0CE1C /* DepartureTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureTimesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,12 +137,8 @@
 				DD9BC77C1C84637700900F85 /* Network Classes */,
 				DD9BC77B1C84635600900F85 /* Models */,
 				DD9BC7741C8462AF00900F85 /*  View Controllers */,
-				DD9BC7571C84610F00900F85 /* AppDelegate.h */,
-				DD9BC7581C84610F00900F85 /* AppDelegate.m */,
 				DD9BC75D1C84610F00900F85 /* Main.storyboard */,
 				DD9BC7601C84610F00900F85 /* Assets.xcassets */,
-				DD9BC7621C84610F00900F85 /* LaunchScreen.storyboard */,
-				DD9BC7651C84610F00900F85 /* Info.plist */,
 				DD9BC7541C84610F00900F85 /* Supporting Files */,
 			);
 			path = "B&H Buses";
@@ -150,6 +149,10 @@
 			children = (
 				DD9881D41CABDD8200BB0B06 /* AllStopsForAllRoutes.json */,
 				DD9BC7551C84610F00900F85 /* main.m */,
+				DD9BC7571C84610F00900F85 /* AppDelegate.h */,
+				DD9BC7581C84610F00900F85 /* AppDelegate.m */,
+				DD9BC7621C84610F00900F85 /* LaunchScreen.storyboard */,
+				DD9BC7651C84610F00900F85 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -163,6 +166,8 @@
 				DD9BC7791C8462E500900F85 /* RoutesTableViewController.m */,
 				DD9882011CAC1D8A00BB0B06 /* StopsTableViewController.h */,
 				DD9882021CAC1D8A00BB0B06 /* StopsTableViewController.m */,
+				DDA1DEAA1CB7B86600B0CE1C /* DepartureTimesViewController.h */,
+				DDA1DEAB1CB7B86600B0CE1C /* DepartureTimesViewController.m */,
 			);
 			name = " View Controllers";
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD9882401CAC5BBF00BB0B06 /* CDStop.m in Sources */,
+				DDA1DEAC1CB7B86600B0CE1C /* DepartureTimesViewController.m in Sources */,
 				DD9881D91CABDE3A00BB0B06 /* BusesModel.xcdatamodeld in Sources */,
 				DD98823D1CAC5BBF00BB0B06 /* CDLkRouteStop+CoreDataProperties.m in Sources */,
 				DD9BC7591C84610F00900F85 /* AppDelegate.m in Sources */,

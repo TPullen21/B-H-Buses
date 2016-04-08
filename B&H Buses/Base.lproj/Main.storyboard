@@ -61,10 +61,57 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Stops" id="COI-TX-ZZZ"/>
+                    <connections>
+                        <segue destination="8fN-2k-YSc" kind="show" identifier="showDepartureTimesVC" id="Kzb-hf-rdS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q3y-dH-Hie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1701" y="-97"/>
+        </scene>
+        <!--Departure Times-->
+        <scene sceneID="BDA-f0-VGd">
+            <objects>
+                <viewController id="8fN-2k-YSc" customClass="DepartureTimesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t2a-fl-Z0u"/>
+                        <viewControllerLayoutGuide type="bottom" id="ei0-a2-dfC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qdt-vF-1Zf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3dj-er-8uh">
+                                <rect key="frame" x="0.0" y="64" width="600" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="MgG-uN-CEX"/>
+                                </constraints>
+                            </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vuS-eA-kRw">
+                                <rect key="frame" x="0.0" y="304" width="600" height="296"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3dj-er-8uh" firstAttribute="top" secondItem="t2a-fl-Z0u" secondAttribute="bottom" id="Gay-Rm-O0Q"/>
+                            <constraint firstAttribute="trailing" secondItem="3dj-er-8uh" secondAttribute="trailing" id="Ldi-u0-nQ2"/>
+                            <constraint firstAttribute="trailing" secondItem="vuS-eA-kRw" secondAttribute="trailing" id="Pst-mE-32k"/>
+                            <constraint firstItem="3dj-er-8uh" firstAttribute="leading" secondItem="qdt-vF-1Zf" secondAttribute="leading" id="Ywt-xd-jWc"/>
+                            <constraint firstItem="vuS-eA-kRw" firstAttribute="top" secondItem="3dj-er-8uh" secondAttribute="bottom" id="Ztc-yK-pk0"/>
+                            <constraint firstItem="vuS-eA-kRw" firstAttribute="leading" secondItem="qdt-vF-1Zf" secondAttribute="leading" id="bXf-6J-XmK"/>
+                            <constraint firstItem="ei0-a2-dfC" firstAttribute="top" secondItem="vuS-eA-kRw" secondAttribute="bottom" id="lf7-ct-9yM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Departure Times" id="J63-y5-s0T"/>
+                    <connections>
+                        <outlet property="mapView" destination="3dj-er-8uh" id="Ij6-KL-7CL"/>
+                        <outlet property="tableView" destination="vuS-eA-kRw" id="roB-Vd-e8d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5o-i5-FJu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2461" y="-96"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bGi-aI-Te4">
@@ -97,7 +144,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xh-yi-Oib">
                                 <rect key="frame" x="20" y="80" width="560" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2ZZ-YL-eVC">

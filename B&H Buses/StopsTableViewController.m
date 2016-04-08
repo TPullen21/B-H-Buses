@@ -7,6 +7,7 @@
 //
 
 #import "StopsTableViewController.h"
+#import "DepartureTimesViewController.h"
 #import "Stop.h"
 
 @interface StopsTableViewController ()
@@ -106,7 +107,7 @@
     
     self.selectedStop = self.coreDataStops[indexPath.row];
     
-    [self performSegueWithIdentifier:@"showDepartureTimesForStopViewController" sender:nil];
+    [self performSegueWithIdentifier:@"showDepartureTimesVC" sender:nil];
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -117,12 +118,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     // If we're segueing to the departure times view contoller, set the stop
-//    if ([segue.destinationViewController isKindOfClass:[DepartureTimesForStopViewController class]]) {
-//        
-//        DepartureTimesForStopViewController *departureTimesVC = segue.destinationViewController;
-//        
-//        departureTimesVC.stop = self.selectedStop;
-//    }
+    if ([segue.destinationViewController isKindOfClass:[DepartureTimesViewController class]]) {
+        
+        DepartureTimesViewController *departureTimesVC = segue.destinationViewController;
+        
+        departureTimesVC.stop = self.selectedStop;
+    }
 }
 
 #pragma mark - Helper Methods
