@@ -10,6 +10,8 @@
 
 @interface DepartureTime : NSObject
 
+@property (strong, nonatomic) NSString *serviceName;
+@property (strong, nonatomic) NSString *destination;
 @property (strong, nonatomic) NSString *departureTimeStamp;
 @property (strong, nonatomic) NSString *departureTimeInMinutes;
 

@@ -61,32 +61,57 @@
 // This delegate method will get called when the departure times web page has been downloaded
 - (void)dataDownloaded:(NSData *)data {
     
-    NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSString *htmlPageToScrape = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    NSArray *myWords = [myString componentsSeparatedByString:@"data-departureTime=\""];
+    NSArray *htmlPageSplitByTableRows = [htmlPageToScrape componentsSeparatedByString:@"rowServiceDeparture"];
     
-    for (int i = 1; i < myWords.count; i++)
+    for (int i = 1; i < htmlPageSplitByTableRows.count; i++)
     {
-        NSArray *myWords2 = [myWords[i] componentsSeparatedByString:@"\" title=\""];
-        
-        NSRange firstRange = [myWords2[1] rangeOfString:@"\""];
-        NSRange finalRange = NSMakeRange(0, firstRange.location);
-        
-        NSString *time = [myWords2[1] substringWithRange:finalRange];
-        
-        NSRange timestampRange = NSMakeRange(11, 5);
-        NSString *timestamp = [myWords2[0] substringWithRange:timestampRange];
+        NSArray *htmlTableRowsSplitByTableData = [htmlPageSplitByTableRows[i] componentsSeparatedByString:@"<td"];
         
         DepartureTime *newDepartureTime = [[DepartureTime alloc] init];
-        newDepartureTime.departureTimeStamp = timestamp;
-        newDepartureTime.departureTimeInMinutes = time;
         
-        // Add this question to the departureTimes array
+        newDepartureTime.serviceName = [self scrapeServiceNameOrDestination:htmlTableRowsSplitByTableData[1]];
+        newDepartureTime.destination = [self scrapeServiceNameOrDestination:htmlTableRowsSplitByTableData[2]];
+        [self scrapeDepartureTimeStampAndTimeInMins:htmlTableRowsSplitByTableData[3] withModel:newDepartureTime];
+        
+        // Add this depature time record to the departureTimes array
         [self.departureTimes addObject:newDepartureTime];
     }
     
     // Reload the table view
     [self.tableView reloadData];
+}
+
+- (NSString *)scrapeServiceNameOrDestination:(NSString *)htmlTDString {
+    
+    NSRange firstRange = [htmlTDString rangeOfString:@">"];
+    firstRange.location++;
+    NSRange finalRange = [htmlTDString rangeOfString:@"<"];
+    NSRange substringRange = NSMakeRange(firstRange.location, finalRange.location - firstRange.location);
+    
+    return [htmlTDString substringWithRange:substringRange];
+}
+
+- (void)scrapeDepartureTimeStampAndTimeInMins:(NSString *)htmlTDString withModel:(DepartureTime *)dt {
+    
+    NSRange firstRange = [htmlTDString rangeOfString:@"data-departureTime=\""];
+    firstRange.location+= 31;
+    NSRange finalRange = [htmlTDString rangeOfString:@"\" title="];
+    NSRange substringRange = NSMakeRange(firstRange.location, finalRange.location - firstRange.location - 3);
+    
+    NSString *timestamp = [htmlTDString substringWithRange:substringRange];
+    
+    
+    firstRange = [htmlTDString rangeOfString:@">"];
+    firstRange.location++;
+    finalRange = [htmlTDString rangeOfString:@"<"];
+    substringRange = NSMakeRange(firstRange.location, finalRange.location - firstRange.location);
+    
+    NSString *time = [htmlTDString substringWithRange:substringRange];
+    
+    dt.departureTimeStamp = timestamp;
+    dt.departureTimeInMinutes = time;
 }
 
 #pragma mark Table View Delegate Methods
@@ -106,6 +131,7 @@
     DepartureTime *departureTime = self.departureTimes[indexPath.row];
     
     // Assign the relevant information to the cell's text labels
+    myCell.serviceNameLabel.text = departureTime.serviceName;
     myCell.departureTimeInMinsLabel.text = departureTime.departureTimeInMinutes;
     myCell.departureTimestampLabel.text = departureTime.departureTimeStamp;
     
