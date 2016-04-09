@@ -44,7 +44,7 @@
     return self;
 }
 
-// Init with a dictionary of the information
+// Init with a stop object retrieved from Core Data
 - initWithCDStop:(CDStop *)cdStop {
     
     self = [super init];
@@ -88,6 +88,19 @@
     
     // Return the first object in the array (should only be one)
     return [listOfStops firstObject];
+}
+
++ (NSArray *)getAllCDStopsWithContext:(NSManagedObjectContext *)context {
+    
+    NSError *error;
+    
+    // Create the fetch object to get the stop for the stop ID
+    NSFetchRequest *getStopRequest = [[NSFetchRequest alloc] initWithEntityName:@"CDStop"];
+    NSArray *listOfStops = [context executeFetchRequest:getStopRequest error:&error];
+    
+    if (error) NSLog(@"%@", error);
+    
+    return listOfStops;
 }
 
 + (void)insertStopIntoCoreData:(Stop *)stop forRouteID:(NSString *)routeID withRouteName:(NSString *)routeName withOrder:(int)listOrder forContext:(NSManagedObjectContext *)context {

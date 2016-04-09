@@ -14,4 +14,6 @@
 @property (strong, nonatomic) UIManagedDocument *document;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
+- (IBAction)nearestStopsBarButtonItemPressed:(id)sender;
+
 @end

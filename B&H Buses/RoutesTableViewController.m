@@ -8,6 +8,7 @@
 
 #import "RoutesTableViewController.h"
 #import "StopsTableViewController.h"
+#import "NearestStopsViewController.h"
 #import "Route.h"
 
 @interface RoutesTableViewController ()
@@ -93,6 +94,11 @@
         stopsVC.route = self.selectedRoute;
         stopsVC.document = self.document;
         stopsVC.context = self.context;
+    } else if ([segue.destinationViewController isKindOfClass:[NearestStopsViewController class]]) {
+        
+        NearestStopsViewController *nearestStopsVC = segue.destinationViewController;
+        
+        nearestStopsVC.context = self.context;
     }
 }
 
@@ -217,4 +223,7 @@
     return _httpGetRequest;
 }
 
+- (IBAction)nearestStopsBarButtonItemPressed:(id)sender {
+    [self performSegueWithIdentifier:@"showNearestStopsVC" sender:nil];
+}
 @end

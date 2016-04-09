@@ -28,14 +28,75 @@
                             <outlet property="delegate" destination="GMQ-MS-b7i" id="J9S-SA-kId"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Routes" id="E07-ct-YhO"/>
+                    <navigationItem key="navigationItem" title="Routes" id="E07-ct-YhO">
+                        <barButtonItem key="leftBarButtonItem" title="Nearest Stops" id="Buq-5V-IZc">
+                            <connections>
+                                <action selector="nearestStopsBarButtonItemPressed:" destination="GMQ-MS-b7i" id="Xzy-XQ-qhn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="7C7-mR-4d1" kind="show" identifier="showStopsTVC" id="qGz-v9-0ft"/>
+                        <segue destination="gr4-l6-LFZ" kind="show" identifier="showNearestStopsVC" id="fZF-mT-JG3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVF-5b-gAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="927" y="-96"/>
+        </scene>
+        <!--Nearest Stops View Controller-->
+        <scene sceneID="2BX-hQ-Q2K">
+            <objects>
+                <viewController id="gr4-l6-LFZ" customClass="NearestStopsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hQJ-NI-BV3"/>
+                        <viewControllerLayoutGuide type="bottom" id="hRM-KY-Wb2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hjt-aA-Nqd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UrN-vC-DnJ">
+                                <rect key="frame" x="0.0" y="64" width="600" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="QDc-7f-UkV"/>
+                                </constraints>
+                            </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1xM-an-GRS">
+                                <rect key="frame" x="0.0" y="304" width="600" height="296"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StopsCell" id="9Pj-9h-BFp">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Pj-9h-BFp" id="av2-9S-juX">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UrN-vC-DnJ" firstAttribute="top" secondItem="hQJ-NI-BV3" secondAttribute="bottom" id="7ER-nf-CZo"/>
+                            <constraint firstItem="hRM-KY-Wb2" firstAttribute="top" secondItem="1xM-an-GRS" secondAttribute="bottom" id="B00-S1-UMG"/>
+                            <constraint firstAttribute="trailing" secondItem="1xM-an-GRS" secondAttribute="trailing" id="G4b-SA-l27"/>
+                            <constraint firstItem="1xM-an-GRS" firstAttribute="top" secondItem="UrN-vC-DnJ" secondAttribute="bottom" id="OHN-LS-1fa"/>
+                            <constraint firstItem="UrN-vC-DnJ" firstAttribute="leading" secondItem="Hjt-aA-Nqd" secondAttribute="leading" id="bBu-YG-nj1"/>
+                            <constraint firstAttribute="trailing" secondItem="UrN-vC-DnJ" secondAttribute="trailing" id="bfG-0F-H8K"/>
+                            <constraint firstItem="1xM-an-GRS" firstAttribute="leading" secondItem="Hjt-aA-Nqd" secondAttribute="leading" id="dAb-E0-gRl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="UrN-vC-DnJ" id="cGY-Oq-Gnf"/>
+                        <outlet property="tableView" destination="1xM-an-GRS" id="rLi-cR-Cjn"/>
+                        <segue destination="8fN-2k-YSc" kind="show" identifier="showNearestStopsDepartureTimesViewController" id="inx-4A-b4V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yv9-BK-5Xv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1701" y="-880"/>
         </scene>
         <!--Stops-->
         <scene sceneID="HZ5-Z9-dSl">
@@ -224,4 +285,7 @@
             <point key="canvasLocation" x="-683" y="-96"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="inx-4A-b4V"/>
+    </inferredMetricsTieBreakers>
 </document>

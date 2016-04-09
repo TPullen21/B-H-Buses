@@ -1,5 +1,5 @@
 //
-//  DepartureTimesViewController.h
+//  NearestStopsViewController.h
 //  B&H Buses
 //
 //  Created by Tom Pullen on 08/04/2016.
@@ -8,15 +8,13 @@
 
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
-#import "HTTPGetRequest.h"
-#import "CDStop.h"
+#import "CoreLocation/CoreLocation.h"
 
-@interface DepartureTimesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, HTTPGetRequestProtocol>
+@interface NearestStopsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) CDStop *stop;
-@property BOOL animateZoom;
+@property (strong, nonatomic) NSManagedObjectContext *context;
 
 @end

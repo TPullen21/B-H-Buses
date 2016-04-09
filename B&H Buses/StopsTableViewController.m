@@ -123,6 +123,7 @@
         DepartureTimesViewController *departureTimesVC = segue.destinationViewController;
         
         departureTimesVC.stop = self.selectedStop;
+        departureTimesVC.animateZoom = YES;
     }
 }
 

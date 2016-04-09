@@ -18,11 +18,13 @@
 @property (strong, nonatomic) NSString *longitude;
 @property (strong, nonatomic) NSString *operatorsCode;
 
+- initWithCDStop:(CDStop *)cdStop;
 - initWithDictionary:(NSDictionary *)dict;
 - initWithID:(NSString *)stopID withName:(NSString *)stopName withLatitude:(NSString *)latitude withLongitude:(NSString *)longitude withOperatorsCode:(NSString *)operatorsCode;
 
 + (NSArray *)returnStopsFromFile;
 
++ (NSArray *)getAllCDStopsWithContext:(NSManagedObjectContext *)context;
 + (CDStop *)getCDStopForStopID:(NSString *)stopID withContext:(NSManagedObjectContext *)context;
 + (void)insertStopIntoCoreData:(Stop *)stop forRouteID:(NSString *)routeID withRouteName:(NSString *)routeName withOrder:(int)listOrder forContext:(NSManagedObjectContext *)context;
 + (NSArray *)getStopsFromCoreForRoute:(NSString *)routeName withID:(NSString *)routeID withContext:(NSManagedObjectContext *)context;

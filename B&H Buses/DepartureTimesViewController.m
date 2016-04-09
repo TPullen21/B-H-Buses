@@ -43,7 +43,7 @@
     
     // Zoom to that region
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(poiCoodinates, 750, 750);
-    [self.mapView setRegion:viewRegion animated:YES];
+    [self.mapView setRegion:viewRegion animated:self.animateZoom];
     
     // Plot pin
     MKPointAnnotation *pin = [[MKPointAnnotation alloc] init];
