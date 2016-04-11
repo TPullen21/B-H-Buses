@@ -34,6 +34,11 @@
 		DDA1DEAC1CB7B86600B0CE1C /* DepartureTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA1DEAB1CB7B86600B0CE1C /* DepartureTimesViewController.m */; };
 		DDA1DEAF1CB7BBC100B0CE1C /* DepartureTime.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA1DEAE1CB7BBC100B0CE1C /* DepartureTime.m */; };
 		DDA1DEB21CB7C3B200B0CE1C /* DepartureTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA1DEB11CB7C3B200B0CE1C /* DepartureTimeTableViewCell.m */; };
+		DDDEB1871CBBBF6400BE65B6 /* Star Empty 64 transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = DDDEB1861CBBBF6400BE65B6 /* Star Empty 64 transparent.png */; };
+		DDDEB1891CBBBFEF00BE65B6 /* Star Empty 32 transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = DDDEB1881CBBBFEF00BE65B6 /* Star Empty 32 transparent.png */; };
+		DDDEB18E1CBBC0DA00BE65B6 /* Star Full 32.png in Resources */ = {isa = PBXBuildFile; fileRef = DDDEB18C1CBBC0DA00BE65B6 /* Star Full 32.png */; };
+		DDDEB18F1CBBC0DA00BE65B6 /* Star Full 64.png in Resources */ = {isa = PBXBuildFile; fileRef = DDDEB18D1CBBC0DA00BE65B6 /* Star Full 64.png */; };
+		DDDEB1911CBBEABF00BE65B6 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDEB1901CBBEABF00BE65B6 /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +89,11 @@
 		DDA1DEAE1CB7BBC100B0CE1C /* DepartureTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureTime.m; sourceTree = "<group>"; };
 		DDA1DEB01CB7C3B200B0CE1C /* DepartureTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureTimeTableViewCell.h; sourceTree = "<group>"; };
 		DDA1DEB11CB7C3B200B0CE1C /* DepartureTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureTimeTableViewCell.m; sourceTree = "<group>"; };
+		DDDEB1861CBBBF6400BE65B6 /* Star Empty 64 transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star Empty 64 transparent.png"; sourceTree = "<group>"; };
+		DDDEB1881CBBBFEF00BE65B6 /* Star Empty 32 transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star Empty 32 transparent.png"; sourceTree = "<group>"; };
+		DDDEB18C1CBBC0DA00BE65B6 /* Star Full 32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star Full 32.png"; sourceTree = "<group>"; };
+		DDDEB18D1CBBC0DA00BE65B6 /* Star Full 64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star Full 64.png"; sourceTree = "<group>"; };
+		DDDEB1901CBBEABF00BE65B6 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +166,10 @@
 		DD9BC7541C84610F00900F85 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DDDEB1881CBBBFEF00BE65B6 /* Star Empty 32 transparent.png */,
+				DDDEB1861CBBBF6400BE65B6 /* Star Empty 64 transparent.png */,
+				DDDEB18C1CBBC0DA00BE65B6 /* Star Full 32.png */,
+				DDDEB18D1CBBC0DA00BE65B6 /* Star Full 64.png */,
 				DD9881D41CABDD8200BB0B06 /* AllStopsForAllRoutes.json */,
 				DD9BC7551C84610F00900F85 /* main.m */,
 				DD9BC7571C84610F00900F85 /* AppDelegate.h */,
@@ -196,6 +210,7 @@
 				DD9881FC1CAC12D400BB0B06 /* LkRouteStop.m */,
 				DDA1DEAD1CB7BBC100B0CE1C /* DepartureTime.h */,
 				DDA1DEAE1CB7BBC100B0CE1C /* DepartureTime.m */,
+				DDDEB1901CBBEABF00BE65B6 /* Constants.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -267,9 +282,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDDEB1891CBBBFEF00BE65B6 /* Star Empty 32 transparent.png in Resources */,
 				DD9BC7641C84610F00900F85 /* LaunchScreen.storyboard in Resources */,
+				DDDEB18F1CBBC0DA00BE65B6 /* Star Full 64.png in Resources */,
+				DDDEB18E1CBBC0DA00BE65B6 /* Star Full 32.png in Resources */,
 				DD9881D51CABDD8200BB0B06 /* AllStopsForAllRoutes.json in Resources */,
 				DD9BC7611C84610F00900F85 /* Assets.xcassets in Resources */,
+				DDDEB1871CBBBF6400BE65B6 /* Star Empty 64 transparent.png in Resources */,
 				DD9BC75F1C84610F00900F85 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +305,7 @@
 				DDA1DEAC1CB7B86600B0CE1C /* DepartureTimesViewController.m in Sources */,
 				DD9881D91CABDE3A00BB0B06 /* BusesModel.xcdatamodeld in Sources */,
 				DD98823D1CAC5BBF00BB0B06 /* CDLkRouteStop+CoreDataProperties.m in Sources */,
+				DDDEB1911CBBEABF00BE65B6 /* Constants.m in Sources */,
 				DD086C471CB7FB7400AB12B0 /* NearestStopsViewController.m in Sources */,
 				DD9BC7591C84610F00900F85 /* AppDelegate.m in Sources */,
 				DD9BC77F1C8463A700900F85 /* HTTPGetRequest.m in Sources */,

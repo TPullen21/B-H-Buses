@@ -96,6 +96,10 @@
     // Get references to labels of cell
     myCell.textLabel.text = stop.stopName;
     
+    if (indexPath.row % 2 == 0) {
+        myCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
     return myCell;
 }
 

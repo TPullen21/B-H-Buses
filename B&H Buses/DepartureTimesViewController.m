@@ -9,11 +9,14 @@
 #import "DepartureTimesViewController.h"
 #import "DepartureTimeTableViewCell.h"
 #import "DepartureTime.h"
+#import "Constants.m"
 
 @interface DepartureTimesViewController ()
 
 @property (strong, nonatomic) NSMutableArray *departureTimes;
+@property (strong, nonatomic) NSMutableArray *favouritedStops;
 @property (strong, nonatomic) HTTPGetRequest *httpGetRequest;
+@property BOOL stopIsFavourited;
 
 @end
 
@@ -30,6 +33,16 @@
     
     // Call the method to asynchronously download the departure times information
     [self.httpGetRequest downloadDataWithURL:[NSString stringWithFormat:@"http://m.buses.co.uk/brightonbuses/operatorpages/mobilesite/stop.aspx?source=siri&stopid=%@", self.stop.stopID]];
+    
+    self.favouritedStops = [self getFavouritedStops];
+    
+    if ([self currentStopIsFavourited]) {
+        self.stopIsFavourited = YES;
+        self.favouritedBarButtonItem.image = [UIImage imageNamed:@"Full Star"];
+    } else {
+        self.stopIsFavourited = NO;
+        self.favouritedBarButtonItem.image = [UIImage imageNamed:@"Empty Star"];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -145,6 +158,40 @@
     dt.departureTimeInMinutes = time;
 }
 
+- (NSMutableArray *)getFavouritedStops {
+    
+    NSArray *favouritedStops = [[NSUserDefaults standardUserDefaults] arrayForKey:FAVOURITED_STOPS_KEY];
+    
+    if (!favouritedStops) {
+        favouritedStops = [[NSArray alloc] init];
+    }
+    
+    return [favouritedStops mutableCopy];
+}
+
+- (BOOL)currentStopIsFavourited {
+    
+    for (NSString *stopID in self.favouritedStops) {
+        if ([stopID isEqualToString:self.stop.stopID]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (void)addStopToFavourites {
+    [self.favouritedStops addObject:self.stop.stopID];
+    [[NSUserDefaults standardUserDefaults] setObject:[self.favouritedStops copy] forKey:FAVOURITED_STOPS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)removeStopFromFavourites {
+    [self.favouritedStops removeObject:self.stop.stopID];
+    [[NSUserDefaults standardUserDefaults] setObject:[self.favouritedStops copy] forKey:FAVOURITED_STOPS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #pragma mark - Lazy Instantiation
 
 - (NSMutableArray *)departureTimes {
@@ -165,15 +212,15 @@
     return _httpGetRequest;
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)favouritedBarButtonItemPressed:(id)sender {
+    if (self.stopIsFavourited) {
+        self.stopIsFavourited = NO;
+        self.favouritedBarButtonItem.image = [UIImage imageNamed:@"Empty Star"];
+        [self removeStopFromFavourites];
+    } else {
+        self.stopIsFavourited = YES;
+        self.favouritedBarButtonItem.image = [UIImage imageNamed:@"Full Star"];
+        [self addStopToFavourites];
+    }
 }
-*/
-
 @end

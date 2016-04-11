@@ -217,8 +217,15 @@
                             <constraint firstItem="ei0-a2-dfC" firstAttribute="top" secondItem="vuS-eA-kRw" secondAttribute="bottom" id="lf7-ct-9yM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Departure Times" id="J63-y5-s0T"/>
+                    <navigationItem key="navigationItem" title="Departure Times" id="J63-y5-s0T">
+                        <barButtonItem key="rightBarButtonItem" image="Full Star" id="HcK-Ko-pcq">
+                            <connections>
+                                <action selector="favouritedBarButtonItemPressed:" destination="8fN-2k-YSc" id="Dt7-wz-dow"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="favouritedBarButtonItem" destination="HcK-Ko-pcq" id="JvY-zD-MHc"/>
                         <outlet property="mapView" destination="3dj-er-8uh" id="Ij6-KL-7CL"/>
                         <outlet property="tableView" destination="vuS-eA-kRw" id="roB-Vd-e8d"/>
                     </connections>
@@ -285,7 +292,10 @@
             <point key="canvasLocation" x="-683" y="-96"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Full Star" width="32" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="inx-4A-b4V"/>
+        <segue reference="Kzb-hf-rdS"/>
     </inferredMetricsTieBreakers>
 </document>
