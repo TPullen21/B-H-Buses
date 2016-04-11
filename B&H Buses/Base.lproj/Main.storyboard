@@ -34,10 +34,16 @@
                                 <action selector="nearestStopsBarButtonItemPressed:" destination="GMQ-MS-b7i" id="Xzy-XQ-qhn"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Favourites" id="zd6-ZO-obt">
+                            <connections>
+                                <action selector="favouritesBarButtonItemPressed:" destination="GMQ-MS-b7i" id="P1x-bL-bNt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="7C7-mR-4d1" kind="show" identifier="showStopsTVC" id="qGz-v9-0ft"/>
                         <segue destination="gr4-l6-LFZ" kind="show" identifier="showNearestStopsVC" id="fZF-mT-JG3"/>
+                        <segue destination="Dnx-1D-fUM" kind="show" identifier="showFavouritesTVC" id="0gR-ke-ooN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVF-5b-gAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,6 +135,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q3y-dH-Hie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1701" y="-97"/>
+        </scene>
+        <!--Favourites-->
+        <scene sceneID="bB1-wS-C6N">
+            <objects>
+                <tableViewController id="Dnx-1D-fUM" customClass="FavouritesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4bR-KZ-OMf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favouritedStopCell" id="B24-V7-tMn">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B24-V7-tMn" id="0Xh-6E-HFn">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Dnx-1D-fUM" id="mRf-Y7-UVx"/>
+                            <outlet property="delegate" destination="Dnx-1D-fUM" id="fvb-eb-ofB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Favourites" id="Jc6-cR-ZjU"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1UL-e3-Xem" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1701" y="709"/>
         </scene>
         <!--Departure Times-->
         <scene sceneID="BDA-f0-VGd">

@@ -226,4 +226,8 @@
 - (IBAction)nearestStopsBarButtonItemPressed:(id)sender {
     [self performSegueWithIdentifier:@"showNearestStopsVC" sender:nil];
 }
+
+- (IBAction)favouritesBarButtonItemPressed:(id)sender {
+    [self performSegueWithIdentifier:@"showFavouritesTVC" sender:nil];
+}
 @end

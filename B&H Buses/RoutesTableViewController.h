@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
 - (IBAction)nearestStopsBarButtonItemPressed:(id)sender;
+- (IBAction)favouritesBarButtonItemPressed:(id)sender;
 
 @end
