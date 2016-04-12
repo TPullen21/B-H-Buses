@@ -9,6 +9,7 @@
 #import "Stop.h"
 #import "Route.h"
 #import "LkRouteStop.h"
+#import "Constants.m"
 
 @implementation Stop
 
@@ -140,6 +141,69 @@
     
     // Return the first object in the array (should only be one)
     return listOfStops;
+}
+
+#pragma mark - Favourite Stops Helper Methods
+
++ (NSArray *)getFavouritedStopIDs {
+    
+    NSArray *favouritedStops = [[NSUserDefaults standardUserDefaults] arrayForKey:FAVOURITED_STOPS_KEY];
+    
+    if (!favouritedStops) {
+        favouritedStops = [[NSArray alloc] init];
+    }
+    
+    return favouritedStops;
+}
+
++ (NSArray *)getFavouritedStopsArrayWithContext:(NSManagedObjectContext *)context {
+    
+    NSArray *favouritedStopIDs = [self getFavouritedStopIDs];
+    
+    NSError *error;
+    
+    NSSet *favouritedStopIDsSet = [NSSet setWithArray:favouritedStopIDs];
+    
+    // Create the fetch object to get the stop for the stop ID
+    NSFetchRequest *getStopRequest = [[NSFetchRequest alloc] initWithEntityName:@"CDStop"];
+    getStopRequest.predicate = [NSPredicate predicateWithFormat:@"any stopID in %@", favouritedStopIDsSet];
+    NSArray *cdStopsArray = [context executeFetchRequest:getStopRequest error:&error];
+    
+    if (error) NSLog(@"%@", error);
+    
+    NSMutableArray *stopsArray = [[NSMutableArray alloc] init];
+    
+    for (CDStop *stop in cdStopsArray) {
+        [stopsArray addObject:[[Stop alloc] initWithCDStop:stop]];
+    }
+    
+    return stopsArray;
+}
+
++ (void)addStopToFavourites:(NSString *)stopID {
+    NSMutableArray *favouritedStops = [[Stop getFavouritedStopIDs] mutableCopy];
+    [favouritedStops addObject:stopID];
+    [[NSUserDefaults standardUserDefaults] setObject:[favouritedStops copy] forKey:FAVOURITED_STOPS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)removeStopFromFavourites:(NSString *)stopID {
+    NSMutableArray *favouritedStops = [[Stop getFavouritedStopIDs] mutableCopy];
+    [favouritedStops removeObject:stopID];
+    [[NSUserDefaults standardUserDefaults] setObject:[favouritedStops copy] forKey:FAVOURITED_STOPS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL)isStopFavourited:(NSString *)stopID {
+    NSArray *favouritedStops = [self getFavouritedStopIDs];
+    
+    for (NSString *favouritedStopID in favouritedStops) {
+        if ([favouritedStopID isEqualToString:stopID]) {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 @end

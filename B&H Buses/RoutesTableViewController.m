@@ -9,6 +9,7 @@
 #import "RoutesTableViewController.h"
 #import "StopsTableViewController.h"
 #import "NearestStopsViewController.h"
+#import "FavouritesTableViewController.h"
 #import "Route.h"
 
 @interface RoutesTableViewController ()
@@ -99,6 +100,11 @@
         NearestStopsViewController *nearestStopsVC = segue.destinationViewController;
         
         nearestStopsVC.context = self.context;
+    } else if ([segue.destinationViewController isKindOfClass:[FavouritesTableViewController class]]) {
+        
+        FavouritesTableViewController *favouritesTVC = segue.destinationViewController;
+        
+        favouritesTVC.context = self.context;
     }
 }
 

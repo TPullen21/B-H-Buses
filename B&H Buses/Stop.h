@@ -29,4 +29,10 @@
 + (void)insertStopIntoCoreData:(Stop *)stop forRouteID:(NSString *)routeID withRouteName:(NSString *)routeName withOrder:(int)listOrder forContext:(NSManagedObjectContext *)context;
 + (NSArray *)getStopsFromCoreForRoute:(NSString *)routeName withID:(NSString *)routeID withContext:(NSManagedObjectContext *)context;
 
++ (NSArray *)getFavouritedStopIDs;
++ (NSArray *)getFavouritedStopsArrayWithContext:(NSManagedObjectContext *)context;
++ (void)addStopToFavourites:(NSString *)stopID;
++ (void)removeStopFromFavourites:(NSString *)stopID;
++ (BOOL)isStopFavourited:(NSString *)stopID;
+
 @end

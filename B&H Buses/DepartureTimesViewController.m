@@ -9,7 +9,7 @@
 #import "DepartureTimesViewController.h"
 #import "DepartureTimeTableViewCell.h"
 #import "DepartureTime.h"
-#import "Constants.m"
+#import "Stop.h"
 
 @interface DepartureTimesViewController ()
 
@@ -34,9 +34,7 @@
     // Call the method to asynchronously download the departure times information
     [self.httpGetRequest downloadDataWithURL:[NSString stringWithFormat:@"http://m.buses.co.uk/brightonbuses/operatorpages/mobilesite/stop.aspx?source=siri&stopid=%@", self.stop.stopID]];
     
-    self.favouritedStops = [self getFavouritedStops];
-    
-    if ([self currentStopIsFavourited]) {
+    if ([Stop isStopFavourited:self.stop.stopID]) {
         self.stopIsFavourited = YES;
         self.favouritedBarButtonItem.image = [UIImage imageNamed:@"Full Star"];
     } else {
@@ -158,38 +156,15 @@
     dt.departureTimeInMinutes = time;
 }
 
-- (NSMutableArray *)getFavouritedStops {
-    
-    NSArray *favouritedStops = [[NSUserDefaults standardUserDefaults] arrayForKey:FAVOURITED_STOPS_KEY];
-    
-    if (!favouritedStops) {
-        favouritedStops = [[NSArray alloc] init];
-    }
-    
-    return [favouritedStops mutableCopy];
-}
-
 - (BOOL)currentStopIsFavourited {
     
-    for (NSString *stopID in self.favouritedStops) {
-        if ([stopID isEqualToString:self.stop.stopID]) {
+    for (CDStop *stop in self.favouritedStops) {
+        if ([stop.stopID isEqualToString:self.stop.stopID]) {
             return YES;
         }
     }
     
     return NO;
-}
-
-- (void)addStopToFavourites {
-    [self.favouritedStops addObject:self.stop.stopID];
-    [[NSUserDefaults standardUserDefaults] setObject:[self.favouritedStops copy] forKey:FAVOURITED_STOPS_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)removeStopFromFavourites {
-    [self.favouritedStops removeObject:self.stop.stopID];
-    [[NSUserDefaults standardUserDefaults] setObject:[self.favouritedStops copy] forKey:FAVOURITED_STOPS_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Lazy Instantiation
@@ -216,11 +191,11 @@
     if (self.stopIsFavourited) {
         self.stopIsFavourited = NO;
         self.favouritedBarButtonItem.image = [UIImage imageNamed:@"Empty Star"];
-        [self removeStopFromFavourites];
+        [Stop removeStopFromFavourites:self.stop.stopID];
     } else {
         self.stopIsFavourited = YES;
         self.favouritedBarButtonItem.image = [UIImage imageNamed:@"Full Star"];
-        [self addStopToFavourites];
+        [Stop addStopToFavourites:self.stop.stopID];
     }
 }
 @end
