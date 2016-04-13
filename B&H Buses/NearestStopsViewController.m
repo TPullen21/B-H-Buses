@@ -34,6 +34,8 @@
     
     // Get all the stops from Core Data
     [self getStopsFromCoreData];
+    
+    self.mapView.showsUserLocation = YES;
 }
 
 - (void)didReceiveMemoryWarning {
