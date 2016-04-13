@@ -166,6 +166,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Favourites" id="Jc6-cR-ZjU"/>
+                    <connections>
+                        <segue destination="8fN-2k-YSc" kind="show" identifier="showFavouriteDepartureTimesVC" id="yKT-ld-VYQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1UL-e3-Xem" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -337,6 +340,6 @@
         <image name="Full Star" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kzb-hf-rdS"/>
+        <segue reference="yKT-ld-VYQ"/>
     </inferredMetricsTieBreakers>
 </document>

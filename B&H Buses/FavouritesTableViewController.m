@@ -7,12 +7,14 @@
 //
 
 #import "FavouritesTableViewController.h"
+#import "DepartureTimesViewController.h"
 #import "Constants.m"
 #import "Stop.h"
 
 @interface FavouritesTableViewController ()
 
 @property (strong, nonatomic) NSArray *favouritedStops;
+@property (strong, nonatomic) Stop *selectedStop;
 
 @end
 
@@ -51,7 +53,16 @@
     return cell;
 }
 
--(void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    self.selectedStop = self.favouritedStops[indexPath.row];
+    [self performSegueWithIdentifier:@"showFavouriteDepartureTimesVC" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[DepartureTimesViewController class]]) {
+        DepartureTimesViewController *departureTimesVC = segue.destinationViewController;
+        departureTimesVC.stop = self.selectedStop;
+    }
 }
 
 @end
