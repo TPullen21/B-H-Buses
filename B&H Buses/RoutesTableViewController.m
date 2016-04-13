@@ -17,7 +17,7 @@
 @property (strong, nonatomic) HTTPGetRequest *httpGetRequest;
 @property (strong, nonatomic) NSMutableArray *downloadedRoutes;
 @property (strong, nonatomic) NSMutableArray *coreDataRoutes;
-@property (strong, nonatomic) NSMutableArray *searchResultsRoutes;
+@property (strong, nonatomic) NSArray *searchResultsRoutes;
 @property (strong, nonatomic) Route *selectedRoute;
 
 @end
@@ -29,8 +29,6 @@
     
     self.httpGetRequest.delegate = self;
     self.searchBar.delegate = self;
-    
-    [self.searchDisplayController.searchResultsTableView registerClass:[UITableViewCell class]forCellReuseIdentifier:@"routesCell"];
     
     //[self.httpGetRequest downloadDataWithURL:@"http://bh.buscms.com//brightonbuses/api/XmlEntities/v1/routes.aspx?xsl=json"];
     
@@ -63,7 +61,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //return [self.downloadedRoutes count];
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (![self isStringEmpty:self.searchBar.text]) {
         return [self.searchResultsRoutes count];
         
     } else {
@@ -77,7 +75,7 @@
     // Get the route to be shown
     //Route *route = self.downloadedRoutes[indexPath.row];
     Route *route = nil;
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (![self isStringEmpty:self.searchBar.text]) {
         route = self.searchResultsRoutes[indexPath.row];
     } else {
         route = self.coreDataRoutes[indexPath.row];
@@ -90,7 +88,7 @@
 
 -(void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    if (self.searchDisplayController.active) {
+    if (![self isStringEmpty:self.searchBar.text]) {
         self.selectedRoute = self.searchResultsRoutes[indexPath.row];
     } else {
         self.selectedRoute = self.coreDataRoutes[indexPath.row];
@@ -227,20 +225,28 @@
     }
 }
 
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+- (void)filterContentForSearchText:(NSString*)searchText
 {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"routeName contains[c] %@", searchText];
     self.searchResultsRoutes = [self.coreDataRoutes filteredArrayUsingPredicate:resultPredicate];
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterContentForSearchText:searchString
-                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-                                      objectAtIndex:[self.searchDisplayController.searchBar
-                                                     selectedScopeButtonIndex]]];
+- (BOOL)isStringEmpty:(NSString *)string {
+    if([string length] == 0) { //string is empty or nil
+        return YES;
+    }
     
-    return YES;
+    if(![[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]) {
+        //string is all whitespace
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self filterContentForSearchText:searchText];
+    [self.tableView reloadData];
 }
 
 
