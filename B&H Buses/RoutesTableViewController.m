@@ -17,6 +17,7 @@
 @property (strong, nonatomic) HTTPGetRequest *httpGetRequest;
 @property (strong, nonatomic) NSMutableArray *downloadedRoutes;
 @property (strong, nonatomic) NSMutableArray *coreDataRoutes;
+@property (strong, nonatomic) NSMutableArray *searchResultsRoutes;
 @property (strong, nonatomic) Route *selectedRoute;
 
 @end
@@ -27,6 +28,9 @@
     [super viewDidLoad];
     
     self.httpGetRequest.delegate = self;
+    self.searchBar.delegate = self;
+    
+    [self.searchDisplayController.searchResultsTableView registerClass:[UITableViewCell class]forCellReuseIdentifier:@"routesCell"];
     
     //[self.httpGetRequest downloadDataWithURL:@"http://bh.buscms.com//brightonbuses/api/XmlEntities/v1/routes.aspx?xsl=json"];
     
@@ -59,7 +63,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //return [self.downloadedRoutes count];
-    return [self.coreDataRoutes count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.searchResultsRoutes count];
+        
+    } else {
+        return [self.coreDataRoutes count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -67,7 +76,12 @@
     
     // Get the route to be shown
     //Route *route = self.downloadedRoutes[indexPath.row];
-    Route *route = self.coreDataRoutes[indexPath.row];
+    Route *route = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        route = self.searchResultsRoutes[indexPath.row];
+    } else {
+        route = self.coreDataRoutes[indexPath.row];
+    }
     
     cell.textLabel.text = route.routeName;
     
@@ -76,7 +90,11 @@
 
 -(void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    self.selectedRoute = self.coreDataRoutes[indexPath.row];
+    if (self.searchDisplayController.active) {
+        self.selectedRoute = self.searchResultsRoutes[indexPath.row];
+    } else {
+        self.selectedRoute = self.coreDataRoutes[indexPath.row];
+    }
     
     [self performSegueWithIdentifier:@"showStopsTVC" sender:nil];
     
@@ -208,6 +226,23 @@
         NSLog(@"Document is not in normal state.");
     }
 }
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"routeName contains[c] %@", searchText];
+    self.searchResultsRoutes = [self.coreDataRoutes filteredArrayUsingPredicate:resultPredicate];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
 
 #pragma mark - Lazy Instantiation
 
