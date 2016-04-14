@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *coreDataRoutes;
 @property (strong, nonatomic) NSArray *searchResultsRoutes;
 @property (strong, nonatomic) Route *selectedRoute;
+@property BOOL searchTextEntered;
 
 @end
 
@@ -29,6 +30,7 @@
     
     self.httpGetRequest.delegate = self;
     self.searchBar.delegate = self;
+    self.searchTextEntered = NO;
     
     //[self.httpGetRequest downloadDataWithURL:@"http://bh.buscms.com//brightonbuses/api/XmlEntities/v1/routes.aspx?xsl=json"];
     
@@ -61,7 +63,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //return [self.downloadedRoutes count];
-    if (![self isStringEmpty:self.searchBar.text]) {
+    if (self.searchTextEntered) {
         return [self.searchResultsRoutes count];
         
     } else {
@@ -75,7 +77,7 @@
     // Get the route to be shown
     //Route *route = self.downloadedRoutes[indexPath.row];
     Route *route = nil;
-    if (![self isStringEmpty:self.searchBar.text]) {
+    if (self.searchTextEntered) {
         route = self.searchResultsRoutes[indexPath.row];
     } else {
         route = self.coreDataRoutes[indexPath.row];
@@ -88,7 +90,7 @@
 
 -(void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    if (![self isStringEmpty:self.searchBar.text]) {
+    if (self.searchTextEntered) {
         self.selectedRoute = self.searchResultsRoutes[indexPath.row];
     } else {
         self.selectedRoute = self.coreDataRoutes[indexPath.row];
@@ -245,7 +247,18 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [self filterContentForSearchText:searchText];
+    
+    // The user has entered some text to search
+    if([searchText length] > 0) {
+        [self filterContentForSearchText:searchText];
+        self.searchTextEntered = YES;
+    }
+    // The user clicked the [X] button or otherwise cleared the text.
+    else {
+        [searchBar performSelector: @selector(resignFirstResponder) withObject: nil afterDelay: 0.1];
+        self.searchTextEntered = NO;
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -277,4 +290,5 @@
 - (IBAction)favouritesBarButtonItemPressed:(id)sender {
     [self performSegueWithIdentifier:@"showFavouritesTVC" sender:nil];
 }
+
 @end
