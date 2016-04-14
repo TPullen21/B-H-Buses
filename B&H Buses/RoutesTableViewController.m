@@ -65,7 +65,6 @@
     //return [self.downloadedRoutes count];
     if (self.searchTextEntered) {
         return [self.searchResultsRoutes count];
-        
     } else {
         return [self.coreDataRoutes count];
     }
@@ -245,6 +244,8 @@
     
     return NO;
 }
+
+#pragma mark - UISearchBar Delegate Methods
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     

@@ -10,8 +10,9 @@
 #import "HTTPGetRequest.h"
 #import "Route.h"
 
-@interface StopsTableViewController : UITableViewController <HTTPGetRequestProtocol>
+@interface StopsTableViewController : UITableViewController <HTTPGetRequestProtocol, UISearchBarDelegate>
 
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) UIManagedDocument *document;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 

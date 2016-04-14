@@ -15,7 +15,9 @@
 @property (strong, nonatomic) HTTPGetRequest *httpGetRequest;
 @property (strong, nonatomic) NSMutableArray *coreDataStops;
 @property (strong, nonatomic) NSMutableArray *downloadedStops;
+@property (strong, nonatomic) NSArray *searchResultsStops;
 @property (strong, nonatomic) CDStop *selectedStop;
+@property BOOL searchTextEntered;
 
 @end
 
@@ -25,6 +27,7 @@
     [super viewDidLoad];
     
     self.httpGetRequest.delegate = self;
+    self.searchBar.delegate = self;
     
     //[self.httpGetRequest downloadDataWithURL:[NSString stringWithFormat:@"http://bh.buscms.com//brightonbuses/api/XmlEntities/v1/route.aspx?routeid=%@&stops=true&xsl=json", self.route.routeID]];
     
@@ -82,7 +85,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.coreDataStops count];
+    if (self.searchTextEntered) {
+        return [self.searchResultsStops count];
+    } else {
+        return [self.coreDataStops count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -91,14 +98,15 @@
     UITableViewCell *myCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     // Get the location to be shown
-    Stop *stop = self.coreDataStops[indexPath.row];
+    Stop *stop = nil;
+    if (self.searchTextEntered) {
+        stop = self.searchResultsStops[indexPath.row];
+    } else {
+        stop = self.coreDataStops[indexPath.row];
+    }
     
     // Get references to labels of cell
     myCell.textLabel.text = stop.stopName;
-    
-    if (indexPath.row % 2 == 0) {
-        myCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
     
     return myCell;
 }
@@ -109,7 +117,11 @@
 
 -(void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    self.selectedStop = self.coreDataStops[indexPath.row];
+    if (self.searchTextEntered) {
+        self.selectedStop = self.searchResultsStops[indexPath.row];
+    } else {
+        self.selectedStop = self.coreDataStops[indexPath.row];
+    }
     
     [self performSegueWithIdentifier:@"showDepartureTimesVC" sender:nil];
     
@@ -167,6 +179,30 @@
     else {
         NSLog(@"Document is not in normal state.");
     }
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"stopName contains[c] %@", searchText];
+    self.searchResultsStops = [self.coreDataStops filteredArrayUsingPredicate:resultPredicate];
+}
+
+#pragma mark - UISearchBar Delegate Methods
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    // The user has entered some text to search
+    if([searchText length] > 0) {
+        [self filterContentForSearchText:searchText];
+        self.searchTextEntered = YES;
+    }
+    // The user clicked the [X] button or otherwise cleared the text.
+    else {
+        [searchBar performSelector: @selector(resignFirstResponder) withObject: nil afterDelay: 0.1];
+        self.searchTextEntered = NO;
+    }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Lazy Instantiation
