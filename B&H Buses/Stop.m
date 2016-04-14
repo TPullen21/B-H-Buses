@@ -171,13 +171,7 @@
     
     if (error) NSLog(@"%@", error);
     
-    NSMutableArray *stopsArray = [[NSMutableArray alloc] init];
-    
-    for (CDStop *stop in cdStopsArray) {
-        [stopsArray addObject:[[Stop alloc] initWithCDStop:stop]];
-    }
-    
-    return stopsArray;
+    return cdStopsArray;
 }
 
 + (void)addStopToFavourites:(NSString *)stopID {

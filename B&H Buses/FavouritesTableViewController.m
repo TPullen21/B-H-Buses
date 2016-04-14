@@ -10,11 +10,12 @@
 #import "DepartureTimesViewController.h"
 #import "Constants.m"
 #import "Stop.h"
+#import "CDStop.h"
 
 @interface FavouritesTableViewController ()
 
 @property (strong, nonatomic) NSArray *favouritedStops;
-@property (strong, nonatomic) Stop *selectedStop;
+@property (strong, nonatomic) CDStop *selectedStop;
 
 @end
 
