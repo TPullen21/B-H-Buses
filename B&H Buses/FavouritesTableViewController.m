@@ -62,7 +62,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isKindOfClass:[DepartureTimesViewController class]]) {
         DepartureTimesViewController *departureTimesVC = segue.destinationViewController;
-        departureTimesVC.stop = self.selectedStop;
+        departureTimesVC.stop = [[Stop alloc] initWithCDStop:self.selectedStop];
     }
 }
 

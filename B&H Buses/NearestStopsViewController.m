@@ -10,12 +10,14 @@
 #import "DepartureTimesViewController.h"
 #import "BusStopAnnotation.h"
 #import "Stop.h"
+#import "Route.h"
+#import "CDRoute.h"
 
 @interface NearestStopsViewController ()
 
 @property (strong, nonatomic) NSMutableArray *allStops;
 @property (strong, nonatomic) NSArray *nearestStops;
-@property (strong, nonatomic) CDStop *selectedStop;
+@property (strong, nonatomic) Stop *selectedStop;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *latestLocation;
 
@@ -174,13 +176,31 @@
         BusStopAnnotation *pin = [[BusStopAnnotation alloc] init];
         pin.coordinate = poiCoodinates;
         pin.title = stop.stopName;
-        pin.subtitle = stop.operatorsCode;
+        pin.subtitle = [self getRouteNumbersForStopID:stop.stopID];
         pin.stop = stop;
         [self.mapView addAnnotation:pin];
     }
     
     self.nearestStops = nearestStops;
     
+}
+
+- (NSString *)getRouteNumbersForStopID:(NSString *)stopID {
+    
+    NSArray *routes = [Route getRoutesForStopID:stopID withContext:self.context];
+    NSString *routeNumbers = @"";
+    BOOL firstIteration = YES;
+    
+    for (CDRoute *cdRoute in routes) {
+        if (firstIteration) {
+            routeNumbers = [routeNumbers stringByAppendingString:[cdRoute.routeName substringToIndex:[cdRoute.routeName rangeOfString:@" "].location]];
+            firstIteration = NO;
+        } else {
+            routeNumbers = [routeNumbers stringByAppendingString:[@", " stringByAppendingString:[cdRoute.routeName substringToIndex:[cdRoute.routeName rangeOfString:@" "].location]]];
+        }
+    }
+    
+    return routeNumbers;
 }
 
 #pragma mark - MKMapViewDelegate Methods

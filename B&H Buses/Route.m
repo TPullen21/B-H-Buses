@@ -7,6 +7,8 @@
 //
 
 #import "Route.h"
+#import "Stop.h"
+#import "CDLkRouteStop.h"
 
 @implementation Route
 
@@ -119,6 +121,27 @@
                                                            inManagedObjectContext:context];
     coreDataRoute.routeID = route.routeID;
     coreDataRoute.routeName = route.routeName;
+}
+
++ (NSArray *)getRoutesForStopID:(NSString *)stopID withContext:(NSManagedObjectContext *)context {
+    
+    NSError *error;
+    
+    CDStop *tempCDStop = [Stop getCDStopForStopID:stopID withContext:context];
+    
+    NSOrderedSet *set = tempCDStop.lkStopRoute;
+    
+    NSMutableArray *listOfRoutes = [[NSMutableArray alloc] init];
+    
+    for (CDLkRouteStop *cdLkRouteStop in set) {
+        [listOfRoutes addObject:cdLkRouteStop.route];
+        //NSLog(@"%@", cdLkRouteStop.route.routeName);
+    }
+    
+    if (error) NSLog(@"%@", error);
+    NSLog(@"%lu", (unsigned long)[listOfRoutes count]);
+    
+    return listOfRoutes;
 }
 
 @end

@@ -138,7 +138,7 @@
         
         DepartureTimesViewController *departureTimesVC = segue.destinationViewController;
         
-        departureTimesVC.stop = self.selectedStop;
+        departureTimesVC.stop = [[Stop alloc] initWithCDStop:self.selectedStop];
         departureTimesVC.animateZoom = YES;
     }
 }
