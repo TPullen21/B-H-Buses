@@ -194,8 +194,6 @@
 				DD9882021CAC1D8A00BB0B06 /* StopsTableViewController.m */,
 				DDA1DEAA1CB7B86600B0CE1C /* DepartureTimesViewController.h */,
 				DDA1DEAB1CB7B86600B0CE1C /* DepartureTimesViewController.m */,
-				DDA1DEB01CB7C3B200B0CE1C /* DepartureTimeTableViewCell.h */,
-				DDA1DEB11CB7C3B200B0CE1C /* DepartureTimeTableViewCell.m */,
 				DD086C451CB7FB7400AB12B0 /* NearestStopsViewController.h */,
 				DD086C461CB7FB7400AB12B0 /* NearestStopsViewController.m */,
 				DDDEB1921CBBF39800BE65B6 /* FavouritesTableViewController.h */,
@@ -215,6 +213,8 @@
 				DD9881FC1CAC12D400BB0B06 /* LkRouteStop.m */,
 				DDA1DEAD1CB7BBC100B0CE1C /* DepartureTime.h */,
 				DDA1DEAE1CB7BBC100B0CE1C /* DepartureTime.m */,
+				DDA1DEB01CB7C3B200B0CE1C /* DepartureTimeTableViewCell.h */,
+				DDA1DEB11CB7C3B200B0CE1C /* DepartureTimeTableViewCell.m */,
 				DDDEB1901CBBEABF00BE65B6 /* Constants.m */,
 			);
 			name = Models;

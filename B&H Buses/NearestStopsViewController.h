@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "CoreLocation/CoreLocation.h"
 
-@interface NearestStopsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
+@interface NearestStopsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

@@ -28,6 +28,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.mapView.delegate = self;
     
     // Initiate request for user's location and for updates on their location
     [self startStandardUpdates];
@@ -178,6 +179,40 @@
     
     self.nearestStops = nearestStops;
     
+}
+
+#pragma mark - MKMapViewDelegate Methods
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    
+    NSString *reuseId = @"pin";
+    
+    MKAnnotationView *pinView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
+    
+    if (pinView == nil) {
+        pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
+        pinView.canShowCallout = true;
+        
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        [rightButton titleForState:UIControlStateNormal];
+        
+        pinView.rightCalloutAccessoryView = rightButton;
+    }
+    else {
+        pinView.annotation = annotation;
+    }
+    
+    return pinView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    if (control == view.rightCalloutAccessoryView) {
+        [self performSegueWithIdentifier:@"showNearestStopsDepartureTimesViewController" sender:nil];
+    }
 }
 
 #pragma mark - Lazy Instantiation
