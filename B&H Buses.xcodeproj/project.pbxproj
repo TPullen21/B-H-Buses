@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DD086C471CB7FB7400AB12B0 /* NearestStopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD086C461CB7FB7400AB12B0 /* NearestStopsViewController.m */; };
+		DD5FA8541CC1495800BF571B /* BusStopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5FA8531CC1495800BF571B /* BusStopAnnotation.m */; };
 		DD9881D51CABDD8200BB0B06 /* AllStopsForAllRoutes.json in Resources */ = {isa = PBXBuildFile; fileRef = DD9881D41CABDD8200BB0B06 /* AllStopsForAllRoutes.json */; };
 		DD9881D91CABDE3A00BB0B06 /* BusesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD9881D71CABDE3A00BB0B06 /* BusesModel.xcdatamodeld */; };
 		DD9881E81CABE67B00BB0B06 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9881E71CABE67B00BB0B06 /* Stop.m */; };
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		DD086C451CB7FB7400AB12B0 /* NearestStopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearestStopsViewController.h; sourceTree = "<group>"; };
 		DD086C461CB7FB7400AB12B0 /* NearestStopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearestStopsViewController.m; sourceTree = "<group>"; };
+		DD5FA8521CC1495800BF571B /* BusStopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusStopAnnotation.h; sourceTree = "<group>"; };
+		DD5FA8531CC1495800BF571B /* BusStopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusStopAnnotation.m; sourceTree = "<group>"; };
 		DD9881D41CABDD8200BB0B06 /* AllStopsForAllRoutes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AllStopsForAllRoutes.json; sourceTree = "<group>"; };
 		DD9881D81CABDE3A00BB0B06 /* BusesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusesModel.xcdatamodel; sourceTree = "<group>"; };
 		DD9881E61CABE67B00BB0B06 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
@@ -216,6 +219,8 @@
 				DDA1DEB01CB7C3B200B0CE1C /* DepartureTimeTableViewCell.h */,
 				DDA1DEB11CB7C3B200B0CE1C /* DepartureTimeTableViewCell.m */,
 				DDDEB1901CBBEABF00BE65B6 /* Constants.m */,
+				DD5FA8521CC1495800BF571B /* BusStopAnnotation.h */,
+				DD5FA8531CC1495800BF571B /* BusStopAnnotation.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 				DD086C471CB7FB7400AB12B0 /* NearestStopsViewController.m in Sources */,
 				DD9BC7591C84610F00900F85 /* AppDelegate.m in Sources */,
 				DD9BC77F1C8463A700900F85 /* HTTPGetRequest.m in Sources */,
+				DD5FA8541CC1495800BF571B /* BusStopAnnotation.m in Sources */,
 				DD98823F1CAC5BBF00BB0B06 /* CDStop+CoreDataProperties.m in Sources */,
 				DD9BC7561C84610F00900F85 /* main.m in Sources */,
 				DD9882031CAC1D8A00BB0B06 /* StopsTableViewController.m in Sources */,

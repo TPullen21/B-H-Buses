@@ -8,6 +8,7 @@
 
 #import "NearestStopsViewController.h"
 #import "DepartureTimesViewController.h"
+#import "BusStopAnnotation.h"
 #import "Stop.h"
 
 @interface NearestStopsViewController ()
@@ -170,10 +171,11 @@
         poiCoodinates.latitude = [stop.latitude doubleValue];
         poiCoodinates.longitude= [stop.longitude doubleValue];
         
-        MKPointAnnotation *pin = [[MKPointAnnotation alloc] init];
+        BusStopAnnotation *pin = [[BusStopAnnotation alloc] init];
         pin.coordinate = poiCoodinates;
         pin.title = stop.stopName;
         pin.subtitle = stop.operatorsCode;
+        pin.stop = stop;
         [self.mapView addAnnotation:pin];
     }
     
@@ -211,6 +213,8 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     if (control == view.rightCalloutAccessoryView) {
+        BusStopAnnotation *annotation = view.annotation;
+        self.selectedStop = annotation.stop;
         [self performSegueWithIdentifier:@"showNearestStopsDepartureTimesViewController" sender:nil];
     }
 }
