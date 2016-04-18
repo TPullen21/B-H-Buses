@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) MKPolyline *polyline;
 @property (strong, nonatomic) MKPolylineView *lineView;
+
+@property (strong, nonatomic) MKPolylineRenderer *lineViewRenderer;
 @property (strong, nonatomic) NSMutableArray *coreDataStops;
 
 @end
@@ -99,10 +101,10 @@
 
 - (void)drawLine {
     
-    // remove polyline if one exists
+    // Remove polyline if one exists
     [self.mapView removeOverlay:self.polyline];
     
-    // create an array of coordinates from allPins
+    // Create an array of coordinates from the stops' co-ordinates
     CLLocationCoordinate2D coordinates[self.coreDataStops.count];
     int i = 0;
     for (Stop *stop in self.coreDataStops) {
@@ -113,23 +115,22 @@
         i++;
     }
     
-    // create a polyline with all cooridnates
+    // Create a polyline with all of the co-oridnates
     MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:self.coreDataStops.count];
     [self.mapView addOverlay:polyline];
     self.polyline = polyline;
     
-    // create an MKPolylineView and add it to the map view
-    self.lineView = [[MKPolylineView alloc]initWithPolyline:self.polyline];
-    self.lineView.strokeColor = [UIColor redColor];
-    self.lineView.lineWidth = 5;
+    // Create an MKPolylineRenderer for the map view overlay
+    self.lineViewRenderer = [[MKPolylineRenderer alloc] initWithPolyline:self.polyline];
+    self.lineViewRenderer.strokeColor = [UIColor redColor];
+    self.lineViewRenderer.lineWidth = 5;
     
 }
 
 #pragma mark - Map View Delegate Methods
 
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
-    
-    return self.lineView;
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+    return  self.lineViewRenderer;
 }
 
 @end
