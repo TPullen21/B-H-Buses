@@ -27,7 +27,7 @@
     self.mapView.delegate = self;
     
     [self getStopsFromCoreData];
-    [self drawLine];
+    [self drawRoute];
 }
 
 #pragma mark - Helper Methods
@@ -97,7 +97,7 @@
     
 }
 
-- (void)drawLine {
+- (void)drawRoute {
     
     // Remove polyline if one exists
     [self.mapView removeOverlay:self.polyline];
