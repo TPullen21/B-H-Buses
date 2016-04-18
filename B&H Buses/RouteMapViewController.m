@@ -14,8 +14,6 @@
 @interface RouteMapViewController ()
 
 @property (strong, nonatomic) MKPolyline *polyline;
-@property (strong, nonatomic) MKPolylineView *lineView;
-
 @property (strong, nonatomic) MKPolylineRenderer *lineViewRenderer;
 @property (strong, nonatomic) NSMutableArray *coreDataStops;
 
