@@ -19,11 +19,11 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="routesCell" id="bgW-U8-Y7C">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="routesCell" id="bgW-U8-Y7C">
                                 <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bgW-U8-Y7C" id="V5d-Ub-m0Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="533" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -50,11 +50,44 @@
                         <segue destination="7C7-mR-4d1" kind="show" identifier="showStopsTVC" id="qGz-v9-0ft"/>
                         <segue destination="gr4-l6-LFZ" kind="show" identifier="showNearestStopsVC" id="fZF-mT-JG3"/>
                         <segue destination="Dnx-1D-fUM" kind="show" identifier="showFavouritesTVC" id="0gR-ke-ooN"/>
+                        <segue destination="AXb-U5-G5d" kind="show" identifier="showRouteMapVC" id="aLG-5z-OBU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVF-5b-gAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="888" y="-143"/>
+        </scene>
+        <!--Route Map View Controller-->
+        <scene sceneID="8lw-PY-Fo9">
+            <objects>
+                <viewController id="AXb-U5-G5d" customClass="RouteMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ex9-yJ-Irh"/>
+                        <viewControllerLayoutGuide type="bottom" id="vRP-xc-erd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wq2-8A-ZS4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mYc-SN-afk">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vRP-xc-erd" firstAttribute="top" secondItem="mYc-SN-afk" secondAttribute="bottom" id="0fG-RO-Fkj"/>
+                            <constraint firstItem="mYc-SN-afk" firstAttribute="leading" secondItem="Wq2-8A-ZS4" secondAttribute="leading" id="PhS-ij-ZNj"/>
+                            <constraint firstItem="mYc-SN-afk" firstAttribute="top" secondItem="ex9-yJ-Irh" secondAttribute="bottom" id="TPA-4D-VeJ"/>
+                            <constraint firstAttribute="trailing" secondItem="mYc-SN-afk" secondAttribute="trailing" id="o0I-MG-vTX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="mYc-SN-afk" id="Y4v-Rc-vgE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uaQ-Wq-kV9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="888" y="-880"/>
         </scene>
         <!--Nearest Stops View Controller-->
         <scene sceneID="2BX-hQ-Q2K">

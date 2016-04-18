@@ -23,5 +23,6 @@
 + (NSMutableArray *)insertAndReturnRoutesFromFileIntoCoreDataWithContext:(NSManagedObjectContext *)context;
 + (void)insertRouteIntoCoreData:(Route *)route forContext:(NSManagedObjectContext *)context;
 + (NSArray *)getRoutesForStopID:(NSString *)stopID withContext:(NSManagedObjectContext *)context;
++ (NSString *)getRouteNumbersForStopID:(NSString *)stopID withContext:(NSManagedObjectContext *)context;
 
 @end

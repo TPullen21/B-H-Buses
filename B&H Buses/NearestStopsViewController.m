@@ -176,31 +176,13 @@
         BusStopAnnotation *pin = [[BusStopAnnotation alloc] init];
         pin.coordinate = poiCoodinates;
         pin.title = stop.stopName;
-        pin.subtitle = [self getRouteNumbersForStopID:stop.stopID];
+        pin.subtitle = [Route getRouteNumbersForStopID:stop.stopID withContext:self.context];
         pin.stop = stop;
         [self.mapView addAnnotation:pin];
     }
     
     self.nearestStops = nearestStops;
     
-}
-
-- (NSString *)getRouteNumbersForStopID:(NSString *)stopID {
-    
-    NSArray *routes = [Route getRoutesForStopID:stopID withContext:self.context];
-    NSString *routeNumbers = @"";
-    BOOL firstIteration = YES;
-    
-    for (CDRoute *cdRoute in routes) {
-        if (firstIteration) {
-            routeNumbers = [routeNumbers stringByAppendingString:[cdRoute.routeName substringToIndex:[cdRoute.routeName rangeOfString:@" "].location]];
-            firstIteration = NO;
-        } else {
-            routeNumbers = [routeNumbers stringByAppendingString:[@", " stringByAppendingString:[cdRoute.routeName substringToIndex:[cdRoute.routeName rangeOfString:@" "].location]]];
-        }
-    }
-    
-    return routeNumbers;
 }
 
 #pragma mark - MKMapViewDelegate Methods

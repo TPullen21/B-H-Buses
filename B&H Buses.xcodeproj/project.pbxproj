@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DD086C471CB7FB7400AB12B0 /* NearestStopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD086C461CB7FB7400AB12B0 /* NearestStopsViewController.m */; };
 		DD5FA8541CC1495800BF571B /* BusStopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5FA8531CC1495800BF571B /* BusStopAnnotation.m */; };
+		DD63FF491CC4EA6A003B10B6 /* RouteMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD63FF481CC4EA6A003B10B6 /* RouteMapViewController.m */; };
 		DD9881D51CABDD8200BB0B06 /* AllStopsForAllRoutes.json in Resources */ = {isa = PBXBuildFile; fileRef = DD9881D41CABDD8200BB0B06 /* AllStopsForAllRoutes.json */; };
 		DD9881D91CABDE3A00BB0B06 /* BusesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD9881D71CABDE3A00BB0B06 /* BusesModel.xcdatamodeld */; };
 		DD9881E81CABE67B00BB0B06 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9881E71CABE67B00BB0B06 /* Stop.m */; };
@@ -48,6 +49,8 @@
 		DD086C461CB7FB7400AB12B0 /* NearestStopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearestStopsViewController.m; sourceTree = "<group>"; };
 		DD5FA8521CC1495800BF571B /* BusStopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusStopAnnotation.h; sourceTree = "<group>"; };
 		DD5FA8531CC1495800BF571B /* BusStopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusStopAnnotation.m; sourceTree = "<group>"; };
+		DD63FF471CC4EA6A003B10B6 /* RouteMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteMapViewController.h; sourceTree = "<group>"; };
+		DD63FF481CC4EA6A003B10B6 /* RouteMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteMapViewController.m; sourceTree = "<group>"; };
 		DD9881D41CABDD8200BB0B06 /* AllStopsForAllRoutes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AllStopsForAllRoutes.json; sourceTree = "<group>"; };
 		DD9881D81CABDE3A00BB0B06 /* BusesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusesModel.xcdatamodel; sourceTree = "<group>"; };
 		DD9881E61CABE67B00BB0B06 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				DD086C461CB7FB7400AB12B0 /* NearestStopsViewController.m */,
 				DDDEB1921CBBF39800BE65B6 /* FavouritesTableViewController.h */,
 				DDDEB1931CBBF39800BE65B6 /* FavouritesTableViewController.m */,
+				DD63FF471CC4EA6A003B10B6 /* RouteMapViewController.h */,
+				DD63FF481CC4EA6A003B10B6 /* RouteMapViewController.m */,
 			);
 			name = " View Controllers";
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 				DD9882031CAC1D8A00BB0B06 /* StopsTableViewController.m in Sources */,
 				DD9882411CAC5BBF00BB0B06 /* CDRoute+CoreDataProperties.m in Sources */,
 				DD9BC7821C8464C100900F85 /* Route.m in Sources */,
+				DD63FF491CC4EA6A003B10B6 /* RouteMapViewController.m in Sources */,
 				DD9882421CAC5BBF00BB0B06 /* CDRoute.m in Sources */,
 				DD9BC7731C8461FB00900F85 /* InitialLoadViewController.m in Sources */,
 				DD9BC77A1C8462E500900F85 /* RoutesTableViewController.m in Sources */,

@@ -10,6 +10,7 @@
 #import "StopsTableViewController.h"
 #import "NearestStopsViewController.h"
 #import "FavouritesTableViewController.h"
+#import "RouteMapViewController.h"
 #import "Route.h"
 
 @interface RoutesTableViewController ()
@@ -100,6 +101,17 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    
+    if (self.searchTextEntered) {
+        self.selectedRoute = self.searchResultsRoutes[indexPath.row];
+    } else {
+        self.selectedRoute = self.coreDataRoutes[indexPath.row];
+    }
+    
+    [self performSegueWithIdentifier:@"showRouteMapVC" sender:nil];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -122,6 +134,12 @@
         FavouritesTableViewController *favouritesTVC = segue.destinationViewController;
         
         favouritesTVC.context = self.context;
+    } else if ([segue.destinationViewController isKindOfClass:[RouteMapViewController class]]) {
+        
+        RouteMapViewController *routeMapVC = segue.destinationViewController;
+        
+        routeMapVC.context = self.context;
+        routeMapVC.route = self.selectedRoute;
     }
 }
 

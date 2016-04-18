@@ -139,9 +139,27 @@
     }
     
     if (error) NSLog(@"%@", error);
-    NSLog(@"%lu", (unsigned long)[listOfRoutes count]);
+    //NSLog(@"%lu", (unsigned long)[listOfRoutes count]);
     
     return listOfRoutes;
+}
+
++ (NSString *)getRouteNumbersForStopID:(NSString *)stopID withContext:(NSManagedObjectContext *)context {
+    
+    NSArray *routes = [Route getRoutesForStopID:stopID withContext:context];
+    NSString *routeNumbers = @"";
+    BOOL firstIteration = YES;
+    
+    for (CDRoute *cdRoute in routes) {
+        if (firstIteration) {
+            routeNumbers = [routeNumbers stringByAppendingString:[cdRoute.routeName substringToIndex:[cdRoute.routeName rangeOfString:@" "].location]];
+            firstIteration = NO;
+        } else {
+            routeNumbers = [routeNumbers stringByAppendingString:[@", " stringByAppendingString:[cdRoute.routeName substringToIndex:[cdRoute.routeName rangeOfString:@" "].location]]];
+        }
+    }
+    
+    return routeNumbers;
 }
 
 @end
