@@ -244,8 +244,7 @@
     }
 }
 
-- (void)filterContentForSearchText:(NSString*)searchText
-{
+- (void)filterContentForSearchText:(NSString*)searchText {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"routeName contains[c] %@", searchText];
     self.searchResultsRoutes = [self.coreDataRoutes filteredArrayUsingPredicate:resultPredicate];
 }
