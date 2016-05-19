@@ -31,6 +31,9 @@
     self.tableView.dataSource = self;
     self.httpGetRequest.delegate = self;
     
+    // Table view cells will cannot be pressed
+    self.tableView.allowsSelection = NO;
+    
     // Call the method to asynchronously download the departure times information
     [self.httpGetRequest downloadDataWithURL:[NSString stringWithFormat:@"http://m.buses.co.uk/brightonbuses/operatorpages/mobilesite/stop.aspx?source=siri&stopid=%@", self.stop.stopID]];
     

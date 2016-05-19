@@ -13,6 +13,7 @@
 @interface RouteMapViewController : UIViewController <MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
 @property (strong, nonatomic) Route *route;

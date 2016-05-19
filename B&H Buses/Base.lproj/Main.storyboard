@@ -57,7 +57,7 @@
             </objects>
             <point key="canvasLocation" x="888" y="-143"/>
         </scene>
-        <!--Route Map View Controller-->
+        <!--Route Map-->
         <scene sceneID="8lw-PY-Fo9">
             <objects>
                 <viewController id="AXb-U5-G5d" customClass="RouteMapViewController" sceneMemberID="viewController">
@@ -69,7 +69,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mYc-SN-afk">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mYc-SN-afk">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                             </mapView>
                         </subviews>
@@ -81,15 +81,18 @@
                             <constraint firstAttribute="trailing" secondItem="mYc-SN-afk" secondAttribute="trailing" id="o0I-MG-vTX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Route Map" id="9rk-3r-szW"/>
                     <connections>
                         <outlet property="mapView" destination="mYc-SN-afk" id="Y4v-Rc-vgE"/>
+                        <outlet property="navigationTitle" destination="9rk-3r-szW" id="ZmY-gE-hI3"/>
+                        <segue destination="8fN-2k-YSc" kind="show" identifier="showRouteMapDepartureTimesViewController" id="g6h-wf-MAp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uaQ-Wq-kV9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="888" y="-880"/>
+            <point key="canvasLocation" x="1701" y="-1664"/>
         </scene>
-        <!--Nearest Stops View Controller-->
+        <!--Nearest Stops-->
         <scene sceneID="2BX-hQ-Q2K">
             <objects>
                 <viewController id="gr4-l6-LFZ" customClass="NearestStopsViewController" sceneMemberID="viewController">
@@ -133,6 +136,7 @@
                             <constraint firstItem="1xM-an-GRS" firstAttribute="leading" secondItem="Hjt-aA-Nqd" secondAttribute="leading" id="dAb-E0-gRl"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Nearest Stops" id="m99-yF-0Ow"/>
                     <connections>
                         <outlet property="mapView" destination="UrN-vC-DnJ" id="cGY-Oq-Gnf"/>
                         <outlet property="tableView" destination="1xM-an-GRS" id="rLi-cR-Cjn"/>
@@ -379,6 +383,6 @@
         <image name="Full Star" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yKT-ld-VYQ"/>
+        <segue reference="g6h-wf-MAp"/>
     </inferredMetricsTieBreakers>
 </document>

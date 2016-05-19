@@ -7,6 +7,7 @@
 //
 
 #import "RouteMapViewController.h"
+#import "DepartureTimesViewController.h"
 #import "BusStopAnnotation.h"
 #import "Stop.h"
 #import "Route.h"
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) MKPolyline *polyline;
 @property (strong, nonatomic) MKPolylineRenderer *lineViewRenderer;
 @property (strong, nonatomic) NSMutableArray *coreDataStops;
+@property (strong, nonatomic) Stop *selectedStop;
 
 @end
 
@@ -25,6 +27,7 @@
     [super viewDidLoad];
     
     self.mapView.delegate = self;
+    self.navigationTitle.title = self.route.routeName;
     
     [self getStopsFromCoreData];
     [self drawRoute];
@@ -129,6 +132,54 @@
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     return  self.lineViewRenderer;
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    
+    NSString *reuseId = @"pin";
+    
+    MKAnnotationView *pinView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
+    
+    if (pinView == nil) {
+        pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
+        pinView.canShowCallout = true;
+        
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        [rightButton titleForState:UIControlStateNormal];
+        
+        pinView.rightCalloutAccessoryView = rightButton;
+    }
+    else {
+        pinView.annotation = annotation;
+    }
+    
+    return pinView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    if (control == view.rightCalloutAccessoryView) {
+        BusStopAnnotation *annotation = view.annotation;
+        self.selectedStop = annotation.stop;
+        [self performSegueWithIdentifier:@"showRouteMapDepartureTimesViewController" sender:nil];
+    }
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.destinationViewController isKindOfClass:[DepartureTimesViewController class]]) {
+        
+        DepartureTimesViewController *departureTimesVC = segue.destinationViewController;
+        
+        departureTimesVC.stop = self.selectedStop;
+        departureTimesVC.animateZoom = NO;
+    }
 }
 
 @end
